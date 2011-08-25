@@ -105,4 +105,3 @@ au FileType c set et sw=2 sts=2 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 " set for make
 map <C-b> :make<RETURN>
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
-
