@@ -1,0 +1,1 @@
+export PATH=~/bin:~/work/research/scripts:~/tmp/llvm/Debug+Asserts/bin:$PATH
