@@ -1,0 +1,13 @@
+[user]
+	name=Lei Xu
+	email=eddyxu@gmail.com
+[alias]
+	st = status
+	rb = svn rebase
+	ci = commit -a
+	co = checkout
+	di = diff
+[color]
+	diff = auto
+	status = auto
+	branch = auto
