@@ -1,5 +1,3 @@
-" Vim configuration file
-" author: Lei Xu <eddyxu@gmail.com>
 set nocompatible
 filetype on
 filetype plugin on
@@ -13,6 +11,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff},\ %{&fenc}]\ [TYPE=%Y]\ [ASCII=\%03.3b
 set laststatus=2
 set visualbell
 set nohlsearch
+set incsearch
 set wildmenu
 set wildmode=longest:full
 set mouse=a
@@ -81,7 +80,7 @@ endfunction
 
 autocmd BufEnter * :syntax sync fromstart
 
-map <C-B> <ESC>:e %:p:h<RETURN>
+"map <C-B> <ESC>:e %:p:h<RETURN>
 map <C-F4> <ESC>:bd<RETURN>
 map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
@@ -103,5 +102,4 @@ au FileType cpp set et sw=2 sts=2 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 au FileType c set et sw=2 sts=2 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 
 " set for make
-map <C-b> :make<RETURN>
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
