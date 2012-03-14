@@ -1,3 +1,2 @@
-file_group
-provenance
-
+*.swp
+*.pyo
