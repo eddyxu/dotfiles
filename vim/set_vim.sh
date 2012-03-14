@@ -13,6 +13,6 @@ ctags -f tags -R /usr/include /usr/local/include
 
 # make tags for python
 cd ftplugin
-python pydiction.py os sys re subprocess optparse \
+python pydiction.py os sys re subprocess argparse \
 		   itertools functools \
 		   numpy scipy matplotlib
