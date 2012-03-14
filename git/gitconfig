@@ -1,0 +1,10 @@
+[alias]
+	st = status
+	rb = svn rebase
+	ci = commit -a
+	co = checkout
+	di = diff
+[color]
+	diff = auto
+	status = auto
+	branch = auto
