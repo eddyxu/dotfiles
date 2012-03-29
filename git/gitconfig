@@ -1,3 +1,6 @@
+[user]
+	name=Lei Xu
+	email=eddyxu@gmail.com
 [alias]
 	st = status
 	rb = svn rebase
