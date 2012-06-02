@@ -53,23 +53,6 @@ map <C-C> <ESC>:Tlist<RETURN>
 set tags=~/.vim/tags,~/tags,./tags,../tags,../../tags
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" Cscope
-if has("cscope")
-	set csprg=/usr/bin/cscope
-	set csto=0
-	set cst
-	set nocsverb
-	" add any database in current directory
-	if filereadable("cscope.out")
-		cs add cscope.out
-	elseif $CSCOPE_DB != ""
-		cs add $CSCOPE_DB
-	endif
-	set csverb
-set cscopetag
-" set cscopequickfix=s-,g-,d-,t-,e-,f-,i-
-endif
-
 " for c/h switch
 let g:alternateExtensions_h = "c,cpp,cc,m"
 let g:alternateExtensions_cpp = "h"

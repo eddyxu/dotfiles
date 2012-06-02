@@ -17,6 +17,7 @@ git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtr
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
 git submodule add git://github.com/vim-scripts/taglist.vim.git bundle/taglist
 git submodule add git://github.com/vim-scripts/Pydiction.git bundle/pydiction
+git submodule add git://github.com/vim-scripts/cscope_macros.vim.git bundle/cscope
 git submodule init
 git submodule update
 git submodule foreach git submodule init
@@ -24,13 +25,9 @@ git submodule foreach git submodule update
 
 BASEDIR=`dirname $0`
 cd `dirname $0`
-echo $PWD
-if ! grep -E 'source .+/vimrc' ~/.vimrc > /dev/null; then
-	echo "source $PWD/vimrc" >> ~/.vimrc
-fi
 
 # make tags for C++
-ctags -f tags -R /usr/include /usr/local/include
+ctags -f ~/.vim/tags -R /usr/include /usr/local/include
 
 # make tags for python
 cd ftplugin
