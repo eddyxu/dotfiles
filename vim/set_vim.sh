@@ -2,7 +2,7 @@
 # Setting up vim on a new machine
 
 if [ ! -d ~/.vim/bundle ]; then
-	mkdir ~/.vim/{autoload,bundle}
+	mkdir -p ~/.vim/{autoload,bundle}
 fi
 cd ~/.vim
 

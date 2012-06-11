@@ -1,1 +1,19 @@
-export PATH=~/bin:~/work/research/scripts:~/tmp/llvm/Debug+Asserts/bin:$PATH
+export PATH=~/bin:$PATH
+
+alias ls="ls -G"
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -la'
+
+# set editor to vim
+if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+else
+	export EDITOR=vim
+fi
+
+# more bash customizatios.
+if [ -f ~/.bashrc_local ]; then
+	. ~/.bashrc_local
+fi
+
