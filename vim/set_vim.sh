@@ -1,9 +1,11 @@
 #!/bin/sh
 # Setting up vim on a new machine
 
+ROOTDIR=`dirname $0`
 if [ ! -d ~/.vim/bundle ]; then
 	mkdir -p ~/.vim/{autoload,bundle}
 fi
+cp -rf $ROOTDIR/plugin ~/.vim
 cd ~/.vim
 
 curl -so ~/.vim/autoload/pathogen.vim \
@@ -30,7 +32,10 @@ cd `dirname $0`
 ctags -f ~/.vim/tags -R /usr/include /usr/local/include
 
 # make tags for python
+if [ ! -d ftplugin ]; then
+  mkdir -p ftplugin
+fi
 cd ftplugin
-python pydiction.py os sys re subprocess argparse \
+python ../bundle/pydiction/pydiction.py os sys re subprocess argparse \
 		   itertools functools \
 		   numpy scipy matplotlib
