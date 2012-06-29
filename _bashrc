@@ -1,6 +1,12 @@
 export PATH=~/bin:$PATH
 
-alias ls="ls -G"
+OS=`uname`
+if [ $OS = 'Linux' ]; then
+  alias ls='ls --color'
+else
+  # OSX or FreeBSD
+  alias ls='ls -G'
+fi
 alias ll='ls -l'
 alias la='ls -a'
 alias l='ls -la'
