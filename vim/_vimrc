@@ -109,6 +109,8 @@ let g:pep8_map='<leader>8'
 " C/C++ settings
 au FileType cpp set et sw=2 sts=2 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 au FileType c set et sw=4 sts=4 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
+" Use C++11 syntax
+au BufNewFile,BufRead *.cpp set syntax=cpp11
 
 au FileType tex,plaintex set nocindent
 

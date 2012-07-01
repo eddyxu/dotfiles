@@ -6,6 +6,7 @@ if [ ! -d ~/.vim/bundle ]; then
 	mkdir -p ~/.vim/{autoload,bundle}
 fi
 cp -rf $ROOTDIR/plugin ~/.vim
+cp -rf $ROOTDIR/syntax ~/.vim
 cd ~/.vim
 
 curl -so ~/.vim/autoload/pathogen.vim \
@@ -39,3 +40,7 @@ cd ftplugin
 python ../bundle/pydiction/pydiction.py os sys re subprocess argparse \
 		   itertools functools \
 		   numpy scipy matplotlib
+
+echo "**********************************************"
+echo "Please add the following line to your ~/.vimrc"
+echo "   source $ROOTDIR/vim/_vimrc"
