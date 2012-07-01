@@ -114,3 +114,7 @@ au FileType tex,plaintex set nocindent
 
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
+
+" Highlight a line if it exceeds 80 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
