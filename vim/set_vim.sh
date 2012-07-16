@@ -6,7 +6,7 @@ if [ ! -d ~/.vim/bundle ]; then
 	mkdir -p ~/.vim/{autoload,bundle}
 fi
 for d in `find $ROOTDIR -maxdepth 1 -type d`; do
-  echo cp -rf $d ~/.vim
+  cp -rf $d ~/.vim
 done
 cd ~/.vim
 
