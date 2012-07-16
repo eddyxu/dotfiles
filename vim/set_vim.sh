@@ -5,8 +5,9 @@ ROOTDIR=`dirname $0`
 if [ ! -d ~/.vim/bundle ]; then
 	mkdir -p ~/.vim/{autoload,bundle}
 fi
-cp -rf $ROOTDIR/plugin ~/.vim
-cp -rf $ROOTDIR/syntax ~/.vim
+for d in `find $ROOTDIR -maxdepth 1 -type d`; do
+  echo cp -rf $d ~/.vim
+done
 cd ~/.vim
 
 curl -so ~/.vim/autoload/pathogen.vim \
