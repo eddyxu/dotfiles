@@ -2,10 +2,15 @@
 # Setting up vim on a new machine
 
 ROOTDIR=`dirname $0`
+cd $ROOTDIR/..
+ROOTDIR=`pwd`
 if [ ! -d ~/.vim/bundle ]; then
-	mkdir -p ~/.vim/{autoload,bundle}
+	mkdir -p ~/.vim/bundle
 fi
-for d in `find $ROOTDIR -maxdepth 1 -type d`; do
+if [ ! -d ~/.vim/autoload ]; then
+	mkdir -p ~/.vim/autoload
+fi
+for d in `find $ROOTDIR/vim -maxdepth 1 -type d`; do
   cp -rf $d ~/.vim
 done
 cd ~/.vim
