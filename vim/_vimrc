@@ -120,3 +120,7 @@ au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
 " Highlight a line if it exceeds 80 chars
 set colorcolumn=81
+
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
