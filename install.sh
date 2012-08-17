@@ -14,6 +14,21 @@ function link_file {
     ln -sf ${source} ${target}
 }
 
+# Let the home file to source the this configure.
+# Works for bash/vim
+function source_file {
+	source="${PWD}/$1"
+	target="${HOME}/${1/_/.}"
+	grep ${source} $target >/dev/null
+	if [ $? -eq 1 ]; then
+		echo "source ${source}" >> $target
+	fi
+}
+
 for i in _*; do
+	if [ $i == '_bashrc' ]; then
+		insert_file $i
+		continue
+	fi
 	link_file $i
 done
