@@ -123,7 +123,7 @@ if match(expand('%:p'), '^/.*/kernel/.*') == 0
 	au FileType c syn keyword cOperator likely unlikely
 endif
 
-au FileType tex,plaintex set nocindent
+au FileType tex,plaintex set nocindent spell
 
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
