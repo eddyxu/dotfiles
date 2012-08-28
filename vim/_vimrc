@@ -40,7 +40,16 @@ set noexpandtab
 set smarttab
 
 " general settings
-au BufWritePre * :%s/\s\+$//e
+function RemoveTrailingWhitespace()
+  if &ft != "diff"
+    let b:curcol = col(".")
+	let b:curline = line(".")
+	silent! %s/\s\+$//
+	silent! %s/\(\s*\n\)\+\%$//
+    call cursor(b:curline, b:curcol)
+  endif
+endfunction
+au BufWritePre * call RemoveTrailingWhitespace()
 
 " Taglist
 let Tlist_Sort_Type = "name" " order by
