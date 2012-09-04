@@ -27,7 +27,7 @@ function source_file {
 
 for i in _*; do
 	if [ $i == '_bashrc' ]; then
-		insert_file $i
+		source_file $i
 		continue
 	fi
 	link_file $i
