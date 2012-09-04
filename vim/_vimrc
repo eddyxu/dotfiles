@@ -138,7 +138,13 @@ au FileType tex,plaintex set nocindent spell
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
 " Highlight a line if it exceeds 80 chars
-set colorcolumn=81
+"
+if exists('+colorcolumn')
+	set colorcolumn=80
+else
+	"" Vim <= 7.3
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
