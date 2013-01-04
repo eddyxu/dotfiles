@@ -140,6 +140,9 @@ endif
 
 au FileType tex,plaintex set nocindent spell
 
+" Use tabs in makefiles
+au FileType make,automake set noexpandtab ts=8
+
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
