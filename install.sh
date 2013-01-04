@@ -17,11 +17,10 @@ function link_file {
 # Let the home file to source the this configure.
 # Works for bash/vim
 function source_file {
-	source="${PWD}/$1"
+	srcfile="${PWD}/$1"
 	target="${HOME}/${1/_/.}"
-	grep ${source} $target >/dev/null
-	if [ $? -eq 1 ]; then
-		echo "source ${source}" >> $target
+	if [ ! -e ${target} ] || grep ${srcfile} $target 2>/dev/null; then
+		echo "source ${srcfile}" >> $target
 	fi
 }
 

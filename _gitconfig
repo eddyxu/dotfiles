@@ -1,3 +1,4 @@
+# vim: ft=gitconfig
 [user]
 	name = Lei Xu
 	email = eddyxu@gmail.com

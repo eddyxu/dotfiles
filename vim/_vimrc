@@ -64,7 +64,7 @@ set tags=~/.vim/tags,~/tags,./tags,../tags,../../tags
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " for c/h switch
-let g:alternateExtensions_h = "c,cpp,cc,m"
+let g:alternateExtensions_h = "c,cpp,cc,m,inl"
 let g:alternateExtensions_cpp = "h"
 let g:alternateExtensions_c = "h"
 let g:alternateExtensions_m = "h"
@@ -113,6 +113,7 @@ vmap <C-Up> :move '<-2<CR>gv
 " Python settings
 au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
 au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
 " pep8
@@ -138,6 +139,9 @@ if match(expand('%:p'), '^/.*/kernel/.*') == 0
 endif
 
 au FileType tex,plaintex set nocindent spell
+
+" Use tabs in makefiles
+au FileType make,automake set noexpandtab ts=8
 
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
