@@ -128,6 +128,11 @@ au BufNewFile *.cpp,*.h 0r ~/.vim/skeleton/cpp.cpp
 " Use C++11 syntax
 au BufNewFile,BufRead *.cpp set syntax=cpp11
 
+" Protobuf syntax
+augroup filetype
+	au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+
 " Coding style for Linux kernel development
 if match(expand('%:p'), '^/.*/kernel/.*') == 0
 	au FileType c set noet ts=8 sw=8 tw=78 ai si
@@ -141,7 +146,7 @@ endif
 au FileType tex,plaintex set nocindent spell
 
 " Use tabs in makefiles
-au FileType make,automake set noexpandtab ts=8
+au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r

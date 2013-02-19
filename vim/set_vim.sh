@@ -28,6 +28,7 @@ git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
 git submodule add https://github.com/sontek/rope-vim.git bundle/ropevim
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
+git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
 git submodule init
 git submodule update
 git submodule foreach git submodule init
