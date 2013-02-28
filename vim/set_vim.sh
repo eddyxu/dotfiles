@@ -19,11 +19,8 @@ curl -so ~/.vim/autoload/pathogen.vim \
 	    https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 
 git init
-<<<<<<< HEAD
 git submodule add git://github.com/altercation/vim-colors-solarized.git bundle/solarized
-=======
 git submodule add git://github.com/funorpain/vim-cpplint.git bundle/cpplint
->>>>>>> 9c4fc44e909354defd70776bb75d2ae4fcdd6dc6
 git submodule add git://github.com/lambdalisue/nose.vim.git bundle/node
 git submodule add git://github.com/vim-scripts/Pydiction.git bundle/pydiction
 git submodule add git://github.com/vim-scripts/cscope_macros.vim.git bundle/cscope
