@@ -27,7 +27,6 @@ git submodule add git://github.com/vim-scripts/cscope_macros.vim.git bundle/csco
 git submodule add git://github.com/vim-scripts/taglist.vim.git bundle/taglist
 git submodule add https://github.com/mitechie/pyflakes-pathogen.git bundle/pyflakes
 git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
-git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
 git submodule add https://github.com/sontek/rope-vim.git bundle/ropevim
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
