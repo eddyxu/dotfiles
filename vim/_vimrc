@@ -60,9 +60,11 @@ let Tlist_Display_Prototype = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Enable_Fold_Column = 0
-map <C-C> <ESC>:Tlist<RETURN>
+"map <C-C> <ESC>:Tlist<RETURN>
 set tags=~/.vim/tags,~/tags,./tags,../tags,../../tags
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+map <C-C> <ESC>:TagbarToggle<CR>
 
 " for c/h switch
 let g:alternateExtensions_h = "c,cpp,cc,m,inl"
@@ -71,6 +73,10 @@ let g:alternateExtensions_c = "h"
 let g:alternateExtensions_m = "h"
 let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:/include/src/g,reg:/src/include/g'
 map <F3> <ESC>:A<CR>
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
