@@ -20,14 +20,15 @@ curl -so ~/.vim/autoload/pathogen.vim \
 
 git init
 git submodule add git://github.com/altercation/vim-colors-solarized.git bundle/solarized
+git submodule add git://github.com/ervandew/supertab.git bundle/supertab
 git submodule add git://github.com/funorpain/vim-cpplint.git bundle/cpplint
 git submodule add git://github.com/lambdalisue/nose.vim.git bundle/node
+git submodule add git://github.com/majutsushi/tagbar.git bundle/tagbar
 git submodule add git://github.com/vim-scripts/Pydiction.git bundle/pydiction
 git submodule add git://github.com/vim-scripts/cscope_macros.vim.git bundle/cscope
 git submodule add git://github.com/vim-scripts/taglist.vim.git bundle/taglist
 git submodule add https://github.com/mitechie/pyflakes-pathogen.git bundle/pyflakes
 git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
-git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
 git submodule add https://github.com/sontek/rope-vim.git bundle/ropevim
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
