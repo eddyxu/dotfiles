@@ -38,6 +38,8 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 set smarttab
+set exrc   " read per-directory .vimrc
+set secure
 
 " general settings
 function RemoveTrailingWhitespace()
