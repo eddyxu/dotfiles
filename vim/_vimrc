@@ -123,6 +123,7 @@ au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,fi
 au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
+au FileType python set omnifunc=pythoncomplete#Complete
 " pep8
 let g:pep8_map='<leader>8'
 
@@ -130,6 +131,7 @@ let g:pep8_map='<leader>8'
 " C/C++ settings
 au FileType cpp set et sw=2 sts=2 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 au FileType c set et sw=4 sts=4 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
+au FileType python set omnifunc=pythoncomplete#Complete
 au BufNewFile *.cpp,*.h 0r ~/.vim/skeleton/cpp.cpp
 
 " Use C++11 syntax
