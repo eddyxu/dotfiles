@@ -1,7 +1,7 @@
 set nocompatible
 
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 call pathogen#helptags()
 
 filetype on
@@ -122,6 +122,9 @@ au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
 au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:ropevim_vim_completion=1
+let g:ropevim_extended_complete=1
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
 " pep8
 let g:pep8_map='<leader>8'

@@ -20,6 +20,7 @@ curl -so ~/.vim/autoload/pathogen.vim \
 
 git init
 git submodule add git://github.com/altercation/vim-colors-solarized.git bundle/solarized
+git submodule add git://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
 git submodule add git://github.com/ervandew/supertab.git bundle/supertab
 git submodule add git://github.com/tpope/vim-fugitive.git bundle/fugitive
 git submodule add git://github.com/funorpain/vim-cpplint.git bundle/cpplint
@@ -58,3 +59,8 @@ python ../bundle/pydiction/pydiction.py os sys re subprocess argparse \
 echo "**********************************************"
 echo "Please add the following line to your ~/.vimrc"
 echo "   source $ROOTDIR/vim/_vimrc"
+VIMRC="$ROOTDIR/vim/_vimrc"
+if grep "source $VIMRC" ~/.vimrc >/dev/null; then
+	cp ~/.vimrc ~/.vimrc.bak
+	echo "source $VIMRC" >> ~/.vimrc
+fi
