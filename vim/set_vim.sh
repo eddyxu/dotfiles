@@ -45,11 +45,9 @@ git submodule foreach git submodule update
 BASEDIR=`dirname $0`
 cd `dirname $0`
 
-echo "**********************************************"
-echo "Please add the following line to your ~/.vimrc"
-echo "   source $ROOTDIR/vim/_vimrc"
 VIMRC="$ROOTDIR/vim/_vimrc"
 if grep "source $VIMRC" ~/.vimrc >/dev/null; then
+	echo "Back up ~/.vimrc to ~/.vimrc.bak "
 	cp ~/.vimrc ~/.vimrc.bak
 	echo "source $VIMRC" >> ~/.vimrc
 fi
