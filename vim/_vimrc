@@ -126,6 +126,7 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:ropevim_vim_completion=1
 let g:ropevim_extended_complete=1
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
+au FileType python set omnifunc=pythoncomplete#Complete
 " pep8
 let g:pep8_map='<leader>8'
 
