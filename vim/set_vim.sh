@@ -20,6 +20,7 @@ curl -so ~/.vim/autoload/pathogen.vim \
 
 git init
 git submodule add git://github.com/Lokaltog/powerline.git bundle/powerline
+git submodule add git://github.com/Rip-Rip/clang_complete.git bundle/clang_completion
 git submodule add git://github.com/altercation/vim-colors-solarized.git bundle/solarized
 git submodule add git://github.com/ervandew/supertab.git bundle/supertab
 git submodule add git://github.com/funorpain/vim-cpplint.git bundle/cpplint
