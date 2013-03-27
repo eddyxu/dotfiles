@@ -39,6 +39,8 @@ set shiftwidth=4
 set noexpandtab
 set smarttab
 set secure
+set encoding=utf-8
+set term=xterm-256color
 
 " general settings
 function RemoveTrailingWhitespace()
@@ -52,8 +54,7 @@ function RemoveTrailingWhitespace()
 endfunction
 au BufWritePre * call RemoveTrailingWhitespace()
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 
 " Taglist
 let Tlist_Sort_Type = "name" " order by
@@ -80,6 +81,10 @@ map <F3> <ESC>:A<CR>
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+
+" Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_symbols = 'fancy'
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
