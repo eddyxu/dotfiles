@@ -20,7 +20,7 @@ curl -so ~/.vim/autoload/pathogen.vim \
 
 git init
 git submodule add git://github.com/Lokaltog/powerline.git bundle/powerline
-git submodule add git://github.com/Rip-Rip/clang_complete.git bundle/clang_completion
+git submodule add git://github.com/Rip-Rip/clang_complete.git bundle/clang_complete
 git submodule add git://github.com/altercation/vim-colors-solarized.git bundle/solarized
 git submodule add git://github.com/ervandew/supertab.git bundle/supertab
 git submodule add git://github.com/funorpain/vim-cpplint.git bundle/cpplint
@@ -48,7 +48,7 @@ BASEDIR=`dirname $0`
 cd `dirname $0`
 
 VIMRC="$ROOTDIR/vim/_vimrc"
-if grep "source $VIMRC" ~/.vimrc >/dev/null; then
+if ! grep "source $VIMRC" ~/.vimrc >/dev/null; then
 	echo "Back up ~/.vimrc to ~/.vimrc.bak "
 	cp ~/.vimrc ~/.vimrc.bak
 	echo "source $VIMRC" >> ~/.vimrc
