@@ -48,6 +48,10 @@ BASEDIR=`dirname $0`
 cd `dirname $0`
 
 VIMRC="$ROOTDIR/vim/_vimrc"
+if [ ! -f ~/.vimrc ]; then
+	echo "source $VIMRC" >> ~/.vimrc
+fi
+
 if ! grep "source $VIMRC" ~/.vimrc >/dev/null; then
 	echo "Back up ~/.vimrc to ~/.vimrc.bak "
 	cp ~/.vimrc ~/.vimrc.bak
