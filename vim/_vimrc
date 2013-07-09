@@ -88,7 +88,7 @@ let g:Powerline_symbols = 'fancy'
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
-let NERDTreeIgnore=['.*>o$', 'Makefile>in$', '.*>a$']
+let NERDTreeIgnore=['.*o$', 'Makefile.in$', '.*a$']
 
 " autocomplet parenthess
 :inoremap ( ()<ESC>i
@@ -114,16 +114,6 @@ autocmd BufEnter * :syntax sync fromstart
 map <C-F4> <ESC>:bd<RETURN>
 map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
-
-nmap <C-Down> :<C-u>move .+1<CR>
-nmap <C-Up> :<C-u>move .-2<CR>
-
-imap <C-Down> <C-o>:<C-u>move .+1<CR>
-imap <C-Up> <C-o>:<C-u>move .-2<CR>
-
-vmap <C-Down> :move '>+1<CR>gv
-vmap <C-Up> :move '<-2<CR>gv
-
 
 " Python settings
 au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
