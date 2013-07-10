@@ -21,6 +21,7 @@ Bundle 'mitechie/pyflakes-pathogen.git'
 Bundle 'reinh/vim-makegreen.git'
 Bundle 'rodjek/vim-puppet.git'
 Bundle 'sontek/rope-vim.git'
+Bundle 'vim-scripts/Cpp11-Syntax-Support'
 Bundle 'vim-scripts/The-NERD-tree.git'
 Bundle 'vim-scripts/pep8.git'
 
