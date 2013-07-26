@@ -166,7 +166,7 @@ autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(s
 " Highlight a line if it exceeds 80 chars
 "
 if exists('+colorcolumn')
-	set colorcolumn=80
+	set colorcolumn=81
 else
 	"" Vim <= 7.3
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
