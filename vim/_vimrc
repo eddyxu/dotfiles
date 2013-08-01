@@ -21,9 +21,11 @@ Bundle 'mitechie/pyflakes-pathogen.git'
 Bundle 'reinh/vim-makegreen.git'
 Bundle 'rodjek/vim-puppet.git'
 Bundle 'sontek/rope-vim.git'
-Bundle 'vim-scripts/Cpp11-Syntax-Support'
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'vim-scripts/Cpp11-Syntax-Support.git'
 Bundle 'vim-scripts/The-NERD-tree.git'
 Bundle 'vim-scripts/pep8.git'
+Bundle 'lambdalisue/nose.vim.git'
 
 filetype plugin indent on
 set nobackup
