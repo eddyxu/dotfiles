@@ -88,7 +88,7 @@ let g:Powerline_symbols = 'fancy'
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
-let NERDTreeIgnore=['.*o$', 'Makefile.in$', '.*a$']
+let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
 
 " autocomplet parenthess
 :inoremap ( ()<ESC>i
