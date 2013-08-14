@@ -8,7 +8,7 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-Bundle 'Lokaltog/powerline.git'
+"Bundle 'Lokaltog/powerline.git'
 Bundle 'Rip-Rip/clang_complete.git'
 Bundle 'a.vim'
 Bundle 'altercation/vim-colors-solarized.git'
