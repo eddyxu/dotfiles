@@ -77,7 +77,6 @@ endfunction
 au BufWritePre * call RemoveTrailingWhitespace()
 
 
-
 " Taglist
 let Tlist_Sort_Type = "name" " order by
 let Tlist_Use_Right_Window = 1 " split to the right side of the screen
@@ -114,7 +113,7 @@ let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
 
 " autocomplet parenthess
 :inoremap ( ()<ESC>i
-		:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap { {}<ESC>i
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
