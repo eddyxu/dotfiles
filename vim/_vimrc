@@ -1,11 +1,33 @@
 set nocompatible
 
 filetype off
-call pathogen#incubate()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-filetype on
-filetype plugin on
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+Bundle 'Lokaltog/powerline.git'
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'a.vim'
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'ervandew/supertab.git'
+Bundle 'funorpain/vim-cpplint.git'
+Bundle 'hynek/vim-python-pep8-indent.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'mitechie/pyflakes-pathogen.git'
+Bundle 'reinh/vim-makegreen.git'
+Bundle 'rodjek/vim-puppet.git'
+Bundle 'sontek/rope-vim.git'
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'vim-scripts/Cpp11-Syntax-Support.git'
+Bundle 'vim-scripts/The-NERD-tree.git'
+Bundle 'vim-scripts/pep8.git'
+Bundle 'lambdalisue/nose.vim.git'
+
+filetype plugin indent on
 set nobackup
 set autowrite
 set clipboard=unnamed
@@ -166,7 +188,7 @@ autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(s
 " Highlight a line if it exceeds 80 chars
 "
 if exists('+colorcolumn')
-	set colorcolumn=80
+	set colorcolumn=81
 else
 	"" Vim <= 7.3
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
