@@ -26,6 +26,7 @@ Bundle 'vim-scripts/Cpp11-Syntax-Support.git'
 Bundle 'vim-scripts/The-NERD-tree.git'
 Bundle 'vim-scripts/pep8.git'
 Bundle 'lambdalisue/nose.vim.git'
+Bundle 'elzr/vim-json.git'
 
 filetype plugin indent on
 set nobackup
