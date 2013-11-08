@@ -35,10 +35,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export PATH=~/bin:/usr/local/bin:$PATH
 
-if [ -d $HOME/.rvm/bin ]; then
-	PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
 	PATH=$PATH:$HOME/work/go/bin
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

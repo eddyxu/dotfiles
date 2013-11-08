@@ -50,9 +50,9 @@ if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
 	. /usr/local/share/bash-completion/bash_completion.sh
 fi
 
-if [ -d $HOME/.rvm/bin ]; then
-	PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
-
-export PATH=~/bin:$PATH
+export PATH=~/bin:~/work/go/bin:$PATH
 export EDITOR=vim
+export GOPATH=~/work/go
+export JAVA_HOME=
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
