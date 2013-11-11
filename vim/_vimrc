@@ -179,11 +179,15 @@ au FileType tex,plaintex set nocindent spell
 " Use tabs in makefiles
 au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
+" json
+set conceallevel=0
+
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
 " Support for [:VIM_EVAL:]foo[:END_EVAL:]
 autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+
 
 " Highlight a line if it exceeds 80 chars
 "
