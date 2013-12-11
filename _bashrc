@@ -54,5 +54,3 @@ export PATH=~/bin:~/work/go/bin:$PATH
 export EDITOR=vim
 export GOPATH=~/work/go
 export JAVA_HOME=
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

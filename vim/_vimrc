@@ -27,6 +27,7 @@ Bundle 'vim-scripts/The-NERD-tree.git'
 Bundle 'vim-scripts/pep8.git'
 Bundle 'lambdalisue/nose.vim.git'
 Bundle 'elzr/vim-json.git'
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on
 set nobackup
@@ -180,7 +181,7 @@ au FileType tex,plaintex set nocindent spell
 au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " json
-set conceallevel=0
+auto FileType json set conceallevel=0
 
 " set for make
 au BufEnter *_test.cpp set makeprg=make\ check\ %:r
