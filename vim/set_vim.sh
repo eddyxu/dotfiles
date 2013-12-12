@@ -15,7 +15,6 @@ for d in `find $ROOTDIR/vim -maxdepth 1 -type d`; do
 done
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-git clone git@github.com:altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
 
 BASEDIR=`dirname $0`
 cd `dirname $0`
