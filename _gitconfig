@@ -19,3 +19,5 @@
 	whitespace = trailing-space,space-before-tab
 [push]
 	default = simple
+[fetch]
+	recurseSubmodules = true
