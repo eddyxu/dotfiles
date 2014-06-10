@@ -1,7 +1,7 @@
 # vim: ft=gitconfig
 [user]
 	name = Lei Xu
-	email = eddyxu@gmail.com
+	email = lei@cloudera.com
 [alias]
 	st = status
 	rb = svn rebase
