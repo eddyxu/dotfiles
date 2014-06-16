@@ -291,3 +291,6 @@ endif
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+" indent xml file
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
