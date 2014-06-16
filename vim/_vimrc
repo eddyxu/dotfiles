@@ -262,6 +262,9 @@ if match(expand('%:p'), '^/.*/kernel/.*') == 0
 	au FileType c syn keyword cOperator likely unlikely
 endif
 
+" Bash
+au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
+
 au FileType tex,plaintex set nocindent spell
 
 " Use tabs in makefiles
