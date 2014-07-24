@@ -24,6 +24,8 @@ function source_file {
 	fi
 }
 
+curl -L http://install.ohmyz.sh | sh
+
 for i in _*; do
 	if [ $i == '_bashrc' ]; then
 		source_file $i
