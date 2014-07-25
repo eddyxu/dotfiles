@@ -35,5 +35,9 @@ fi
 
 vim +BundleInstall +qall
 
-cd ~/.vim/bundle/clang_complete
-make
+#cd ~/.vim/bundle/clang_complete
+#make
+
+# Set YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
