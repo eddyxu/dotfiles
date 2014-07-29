@@ -1,2 +1,3 @@
 *.swp
 *.pyo
+.DS_Store
