@@ -45,5 +45,7 @@ if [ -d $HOME/work/go ]; then
 fi
 
 export PATH=$PATH:~/work/hadev
+export PATH=$PATH:`cd /usr/local/Cellar/git/*/share/git-core/contrib/workdir; pwd`
 export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=256m -Dmaven.javadoc.skip=true"
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 source ~/work/hadev/hadoop-dev.sh
