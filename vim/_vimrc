@@ -139,7 +139,7 @@ map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
 
 " Python settings
-au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
+au FileType python set et tw=79 ts=2 sts=2 sw=2 autoindent sta
 au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
