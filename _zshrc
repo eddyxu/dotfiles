@@ -37,7 +37,7 @@ fi
 
 # Customize to your needs...
 export EDITOR=vim
-export PATH=~/bin:/usr/local/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$PATH:/usr/local/texlive/2014/bin/x86_64-darwin
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go

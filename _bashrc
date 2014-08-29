@@ -13,7 +13,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s histappend
-shopt -s globstar  # support `ls **`
+#shopt -s globstar  # support `ls **`
 
 OS=`uname`
 if [ $OS = 'Linux' ]; then

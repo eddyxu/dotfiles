@@ -26,3 +26,7 @@
 	path = ~/.gitconfig.local
 [diff]
 	tool = vimdiff
+[branch]
+	autosetuprebase = always
+[difftool]
+	prompt = false
