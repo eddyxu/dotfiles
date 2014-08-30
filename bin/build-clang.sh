@@ -27,7 +27,7 @@ function build_clang() {
   cd $DEVTOOL_ROOT/llvm
   mkdir build && cd build
   CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ..
-  make -j8
+  make -j8 install
 }
 
 if [[ ! -d $DEVTOOL_ROOT ]]; then
