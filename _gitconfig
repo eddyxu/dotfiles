@@ -25,8 +25,17 @@
 [include]
 	path = ~/.gitconfig.local
 [diff]
-	tool = vimdiff
+	tool = p4mergetool
 [branch]
 	autosetuprebase = always
 [difftool]
 	prompt = false
+[merge]
+	tool = p4mergetool
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+[mergetool]
+	keepBackup = false
+[difftool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE

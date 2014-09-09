@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'Lokaltog/powerline.git'
 Bundle 'Blackrush/vim-gocode.git'
 "Bundle 'Rip-Rip/clang_complete.git'
+Bundle "rhysd/vim-clang-format"
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'a.vim'
 Bundle 'altercation/vim-colors-solarized.git'
@@ -236,6 +237,9 @@ endfunction
 au FileType cpp call SetupForCLang()
 au FileType c set et sw=4 sts=4 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 au BufNewFile *.cpp,*.h 0r ~/.vim/skeleton/cpp.cpp
+let g:clang_format#code_style="Google"
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 " Use C++11 syntax
 au BufNewFile,BufRead *.cpp set syntax=cpp11
