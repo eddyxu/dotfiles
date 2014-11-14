@@ -1,36 +1,38 @@
 set nocompatible
 
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-"Bundle 'Lokaltog/powerline.git'
-Bundle 'Blackrush/vim-gocode.git'
-"Bundle 'Rip-Rip/clang_complete.git'
-Bundle "rhysd/vim-clang-format"
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'a.vim'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'bling/vim-airline'
-Bundle 'funorpain/vim-cpplint.git'
-Bundle 'hynek/vim-python-pep8-indent.git'
-Bundle 'jnwhiteh/vim-golang.git'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'lambdalisue/nose.vim.git'
-Bundle 'majutsushi/tagbar.git'
-Bundle 'mitechie/pyflakes-pathogen.git'
-Bundle 'reinh/vim-makegreen.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'nvie/vim-flake8'
-Bundle 'vim-scripts/Cpp11-Syntax-Support.git'
-Bundle 'vim-scripts/The-NERD-tree.git'
-Bundle 'vim-scripts/pep8.git'
-
+"Plugin 'Lokaltog/powerline.git'
+Plugin 'Blackrush/vim-gocode.git'
+"Plugin 'Rip-Rip/clang_complete.git'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'a.vim'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'bling/vim-airline'
+Plugin 'funorpain/vim-cpplint.git'
+Plugin 'hynek/vim-python-pep8-indent.git'
+Plugin 'jnwhiteh/vim-golang.git'
+Plugin 'fatih/vim-go'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'lambdalisue/nose.vim.git'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'mitechie/pyflakes-pathogen.git'
+Plugin 'reinh/vim-makegreen.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
+Plugin 'vim-scripts/The-NERD-tree.git'
+Plugin 'vim-scripts/pep8.git'
+call vundle#end()
 filetype plugin indent on
+
 set nobackup
 set autowrite
 set clipboard=unnamed
