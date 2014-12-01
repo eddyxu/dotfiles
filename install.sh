@@ -24,7 +24,8 @@ function source_file {
 	fi
 }
 
-curl -L http://install.ohmyz.sh | sh
+#curl -L http://install.ohmyz.sh | sh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 for i in _*; do
 	if [ $i == '_bashrc' ]; then
