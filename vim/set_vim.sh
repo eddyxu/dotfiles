@@ -14,10 +14,10 @@ for d in `find $ROOTDIR/vim -maxdepth 1 -type d`; do
   cp -rf $d ~/.vim
 done
 
-if [ -d ~/.vim/bundle/vundle ]; then
-	rm -rf ~/.vim/bundle/vundle
+if [ -d ~/.vim/bundle/Vundle.vim ]; then
+	rm -rf ~/.vim/bundle/Vundle.vim
 fi
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 BASEDIR=`dirname $0`
 cd `dirname $0`
