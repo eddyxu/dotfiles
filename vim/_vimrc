@@ -9,7 +9,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'Lokaltog/powerline.git'
-Plugin 'Blackrush/vim-gocode.git'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'fatih/vim-go'
 "Plugin 'Rip-Rip/clang_complete.git'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'Valloric/YouCompleteMe'
@@ -18,8 +19,6 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'bling/vim-airline'
 Plugin 'funorpain/vim-cpplint.git'
 Plugin 'hynek/vim-python-pep8-indent.git'
-Plugin 'jnwhiteh/vim-golang.git'
-Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'lambdalisue/nose.vim.git'
 Plugin 'majutsushi/tagbar.git'
