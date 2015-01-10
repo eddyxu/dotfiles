@@ -237,7 +237,7 @@ endfunction
 " C/C++ settings
 au FileType cpp call SetupForCLang()
 au FileType c set et sw=4 sts=4 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
-au BufNewFile *.cpp,*.h 0r ~/.vim/skeleton/cpp.cpp
+au BufNewFile *.cpp,*.h,*.cc 0r ~/.vim/skeleton/cpp.cpp
 let g:clang_format#code_style="Google"
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
