@@ -1,3 +1,4 @@
+# vim:ft=sh
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -36,12 +37,17 @@ if [[ -s '/etc/zsh_command_not_found' ]]; then
 fi
 
 # Customize to your needs...
+OS=`uname`
 export EDITOR=vim
-export PATH=~/bin:/usr/local/bin:$PATH:/usr/local/texlive/2014/bin/x86_64-darwin
+export PATH=~/bin:/usr/local/bin:$PATH
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
 	PATH=$PATH:$HOME/work/go/bin
+fi
+
+if [ -d /usr/local/opt/go/libexec/bin ]; then
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
 export PATH=$PATH:~/work/hadev
@@ -53,6 +59,11 @@ if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 elif [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
   export JAVA_HOME='/usr/lib/jvm/java-7-openjdk-amd64'
+fi
+
+if [ $OS = 'Darwin' ]; then
+  export CXX=g++-4.9
+  export CC=gcc-4.9
 fi
 
 source ~/work/hadev/hadoop-dev.sh
