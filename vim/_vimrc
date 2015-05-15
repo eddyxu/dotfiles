@@ -29,6 +29,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 Plugin 'vim-scripts/The-NERD-tree.git'
 Plugin 'vim-scripts/pep8.git'
+Plugin 'davidzchen/vim-bazel'
 call vundle#end()
 filetype plugin indent on
 
