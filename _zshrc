@@ -66,8 +66,9 @@ elif [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
 fi
 
 if [ $OS = 'Darwin' ]; then
-  export CXX=g++-4.9
-  export CC=gcc-4.9
+  export CXX=g++-5
+  export CC=gcc-5
 fi
 
 source ~/work/hadev/hadoop-dev.sh
+source ~/work/dotfiles/docker.sh
