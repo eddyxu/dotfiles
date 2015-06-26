@@ -8,9 +8,10 @@ function docker-create() {
     exit 1
   fi
   name=$1
-  docker-machine create -d vmwarefusion $name \
-    --vmwarefusion-boot2docker-url "$ISO_URL" \
-    --vmwarefusion-memory-size "2048"
+  docker-machine create -d vmwarefusion
+    --vmwarefusion-memory-size "2048" \
+    --vmwarefusion-cpu-count "2" \
+    $name
 }
 
 function docker-env() {
