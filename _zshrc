@@ -70,5 +70,7 @@ if [ $OS = 'Darwin' ]; then
   export CC=gcc-5
 fi
 
-source ~/work/hadev/hadoop-dev.sh
+if [ -f ~/work/hadev/hadoop-dev.sh ]; then
+  source ~/work/hadev/hadoop-dev.sh
+fi
 source ~/work/dotfiles/docker.sh
