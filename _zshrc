@@ -57,10 +57,15 @@ fi
 export PATH=$PATH:~/work/hadev
 if [ -d /usr/local/Cellar/git ]; then
 	export PATH=$PATH:`cd /usr/local/Cellar/git/*/share/git-core/contrib/workdir; pwd`
+elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
+  export PATH=$PATH:/usr/share/doc/git/contrib/workdir/
 fi
+
 export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=256m -Dmaven.javadoc.skip=true"
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+elif [ -d /usr/lib/jvm/java-7-oracle ]; then
+  export JAVA_HOME='/usr/lib/jvm/java-7-oracle'
 elif [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
   export JAVA_HOME='/usr/lib/jvm/java-7-openjdk-amd64'
 fi
