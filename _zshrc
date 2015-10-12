@@ -79,3 +79,7 @@ if [ -f ~/work/hadev/hadoop-dev.sh ]; then
   source ~/work/hadev/hadoop-dev.sh
 fi
 source ~/work/dotfiles/docker.sh
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  . /usr/local/bin/virtualenvwrapper.sh
+fi

@@ -9,9 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "Plugin 'Lokaltog/powerline.git'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
-"Plugin 'Rip-Rip/clang_complete.git'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'a.vim'
@@ -27,9 +25,8 @@ Plugin 'reinh/vim-makegreen.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
-Plugin 'vim-scripts/The-NERD-tree.git'
 Plugin 'vim-scripts/pep8.git'
-Plugin 'davidzchen/vim-bazel'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
