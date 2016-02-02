@@ -8,24 +8,26 @@ call vundle#begin()
 " required!
 Plugin 'gmarik/Vundle.vim'
 
-"Plugin 'Lokaltog/powerline.git'
 Plugin 'fatih/vim-go'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'rhysd/vim-clang-format'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
 Plugin 'a.vim'
 Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'funorpain/vim-cpplint.git'
-Plugin 'hynek/vim-python-pep8-indent.git'
+"Plugin 'hynek/vim-python-pep8-indent.git'
+Plugin 'klen/python-mode'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'lambdalisue/nose.vim.git'
+"Plugin 'lambdalisue/nose.vim.git'
 Plugin 'majutsushi/tagbar.git'
-Plugin 'mitechie/pyflakes-pathogen.git'
+"'Plugin 'mitechie/pyflakes-pathogen.git'
 Plugin 'reinh/vim-makegreen.git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'nvie/vim-flake8'
+"Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
-Plugin 'vim-scripts/pep8.git'
+"Plugin 'vim-scripts/pep8.git'
 Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
@@ -37,7 +39,6 @@ syntax on
 set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff},\ %{&fenc}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 set visualbell
 set nohlsearch
@@ -139,7 +140,7 @@ map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
 
 " Python settings
-au FileType python set et tw=79 ts=2 sts=2 sw=2 autoindent sta
+au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
 au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
@@ -148,8 +149,6 @@ let g:ropevim_vim_completion=1
 let g:ropevim_extended_complete=1
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
 au FileType python set omnifunc=pythoncomplete#Complete
-" pep8
-let g:pep8_map='<leader>8'
 
 " Set up C++ follow google C++ style
 " https://code.google.com/p/chromiumembedded/wiki/VimConfiguration

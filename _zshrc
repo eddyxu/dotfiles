@@ -24,7 +24,8 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew osx vagrant pip fabric debian command-not-found go mvn)
+plugins=(git git-extras brew osx vagrant pip fabric debian command-not-found
+go mvn aws docker)
 
 if [ -d /usr/local/share/zsh-completions ]; then
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -48,10 +49,6 @@ fi
 
 if [ -d /usr/local/opt/go/libexec/bin ]; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
-fi
-
-if [ -d $HOME/tmp/bazel ]; then
-  export PATH=$PATH:$HOME/tmp/bazel/output
 fi
 
 export PATH=$PATH:~/work/hadev
@@ -82,4 +79,8 @@ source ~/work/dotfiles/docker.sh
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   . /usr/local/bin/virtualenvwrapper.sh
+fi
+
+if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
+  source /usr/local/share/zsh/site-functions/_aws
 fi
