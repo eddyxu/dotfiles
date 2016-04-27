@@ -25,7 +25,7 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras brew osx vagrant pip fabric debian command-not-found
-go mvn aws docker)
+go mvn aws docker heroku gulp nvm)
 
 if [ -d /usr/local/share/zsh-completions ]; then
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -47,6 +47,7 @@ if [ -d $HOME/work/go ]; then
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
+
 if [ -d /usr/local/opt/go/libexec/bin ]; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
@@ -58,6 +59,7 @@ elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
   export PATH=$PATH:/usr/share/doc/git/contrib/workdir/
 fi
 
+export PATH=/Users/lei/work/supertest/grind/bin:$PATH
 export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=256m -Dmaven.javadoc.skip=true"
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
