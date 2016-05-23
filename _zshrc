@@ -60,9 +60,9 @@ elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
 fi
 
 export PATH=/Users/lei/work/supertest/grind/bin:$PATH
-export MAVEN_OPTS="-Xmx4096m -XX:MaxPermSize=256m -Dmaven.javadoc.skip=true"
+export MAVEN_OPTS="-Xmx4096m -Dmaven.javadoc.skip=true"
 if [ -f /usr/libexec/java_home ]; then
-	export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 elif [ -d /usr/lib/jvm/java-7-oracle ]; then
   export JAVA_HOME='/usr/lib/jvm/java-7-oracle'
 elif [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
@@ -70,8 +70,8 @@ elif [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
 fi
 
 if [ $OS = 'Darwin' ]; then
-  export CXX=g++-4.9
-  export CC=gcc-4.9
+  export CXX=clang++
+  export CC=clang
 fi
 
 if [ -f ~/work/hadev/hadoop-dev.sh ]; then

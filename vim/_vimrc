@@ -29,6 +29,7 @@ Plugin 'reinh/vim-makegreen.git'
 "Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'vim-scripts/pep8.git'
 Plugin 'scrooloose/nerdtree'
+Plugin 'leafgarland/typescript-vim.git'
 call vundle#end()
 filetype plugin indent on
 
