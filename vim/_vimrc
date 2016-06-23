@@ -29,7 +29,6 @@ Plugin 'reinh/vim-makegreen.git'
 "Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'vim-scripts/pep8.git'
 Plugin 'scrooloose/nerdtree'
-Plugin 'leafgarland/typescript-vim.git'
 call vundle#end()
 filetype plugin indent on
 
@@ -146,8 +145,8 @@ au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,fi
 au FileType python compiler nose
 au BufNewFile *.py 0r ~/.vim/skeleton/py.py
 au FileType python set omnifunc=pythoncomplete#Complete
-let g:ropevim_vim_completion=1
-let g:ropevim_extended_complete=1
+let g:ropevim_vim_completion=0
+let g:ropevim_extended_complete=0
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
 au FileType python set omnifunc=pythoncomplete#Complete
 
@@ -247,16 +246,6 @@ au BufNewFile,BufRead *.cpp set syntax=cpp11
 augroup filetype
 	au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
-
-" Coding style for Linux kernel development
-if match(expand('%:p'), '^/.*/kernel/.*') == 0
-	au FileType c set noet ts=8 sw=8 tw=78 ai si
-	au FileType c set backspace=eol,start,indent
-	au FileType c syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t
-	au FileType c syn keyword uint8_t boolean_t int64_t int32_t int16_t int8_t
-	au FileType c syn keyword u_int64_t u_int32_t u_int16_t u_int8_t
-	au FileType c syn keyword cOperator likely unlikely
-endif
 
 " Bash
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
