@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'fatih/vim-go'
+Plugin 'AndrewRadev/splitjoin.vim'
 "Plugin 'rhysd/vim-clang-format'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
@@ -29,6 +30,9 @@ Plugin 'reinh/vim-makegreen.git'
 "Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'vim-scripts/pep8.git'
 Plugin 'scrooloose/nerdtree'
+Plugin 'lifepillar/pgsql.vim.git'
+Plugin 'hashivim/vim-hashicorp-tools'
+Plugin 'fatih/vim-nginx'
 call vundle#end()
 filetype plugin indent on
 

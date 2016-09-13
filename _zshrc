@@ -24,8 +24,8 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew osx vagrant pip fabric debian command-not-found
-go mvn aws docker heroku gulp nvm)
+plugins=(git git-extras brew osx pip fabric debian command-not-found
+go mvn aws docker docker-compose heroku gulp nvm)
 
 if [ -d /usr/local/share/zsh-completions ]; then
 fpath=(/usr/local/share/zsh-completions $fpath)
