@@ -10,8 +10,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'fatih/vim-go'
 Plugin 'AndrewRadev/splitjoin.vim'
-"Plugin 'rhysd/vim-clang-format'
+
+" C++ plugins
+Plugin 'rhysd/vim-clang-format'
+Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'scrooloose/syntastic'
 Plugin 'a.vim'
 Plugin 'altercation/vim-colors-solarized.git'
@@ -27,7 +31,6 @@ Plugin 'majutsushi/tagbar.git'
 Plugin 'reinh/vim-makegreen.git'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'nvie/vim-flake8'
-"Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'vim-scripts/pep8.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lifepillar/pgsql.vim.git'
@@ -154,97 +157,13 @@ let g:ropevim_extended_complete=0
 let g:pydiction_location='~/.vim/ftplugin/complete-dict'
 au FileType python set omnifunc=pythoncomplete#Complete
 
-" Set up C++ follow google C++ style
-" https://code.google.com/p/chromiumembedded/wiki/VimConfiguration
-"
-" Configuration for C-like languages.
-function! SetupForCLang()
-    " Highlight lines longer than 80 characters.
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
-    " Alternately, uncomment these lines to wrap at 80 characters.
-    " setlocal textwidth=80
-    " setlocal wrap
-
-    " Use 2 spaces for indentation.
-    setlocal shiftwidth=2
-    setlocal tabstop=2
-    setlocal softtabstop=2
-    setlocal expandtab
-
-    " Configure auto-indentation formatting.
-    setlocal cindent
-    setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
-    setlocal indentexpr=GoogleCppIndent()
-    let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
-endfunction
-
-" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
-function! GoogleCppIndent()
-    let l:cline_num = line('.')
-
-    let l:orig_indent = cindent(l:cline_num)
-
-    if l:orig_indent == 0 | return 0 | endif
-
-    let l:pline_num = prevnonblank(l:cline_num - 1)
-    let l:pline = getline(l:pline_num)
-    if l:pline =~# '^\s*template' | return l:pline_indent | endif
-
-    " TODO: I don't know to correct it:
-    " namespace test {
-    " void
-    " ....<-- invalid cindent pos
-    "
-    " void test() {
-    " }
-    "
-    " void
-    " <-- cindent pos
-    if l:orig_indent != &shiftwidth | return l:orig_indent | endif
-
-    let l:in_comment = 0
-    let l:pline_num = prevnonblank(l:cline_num - 1)
-    while l:pline_num > -1
-        let l:pline = getline(l:pline_num)
-        let l:pline_indent = indent(l:pline_num)
-
-        if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
-            let l:in_comment = 1
-        elseif l:in_comment == 1
-            if l:pline =~ '/\*\(.\{-}\*/\)\@!'
-                let l:in_comment = 0
-            endif
-        elseif l:pline_indent == 0
-            if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
-                if l:pline =~# '^\s*namespace.*'
-                    return 0
-                else
-                    return l:orig_indent
-                endif
-            elseif l:pline =~# '\\$'
-                return l:orig_indent
-            endif
-        else
-            return l:orig_indent
-        endif
-
-        let l:pline_num = prevnonblank(l:pline_num - 1)
-    endwhile
-
-    return l:orig_indent
-endfunction
-
-
 " C/C++ settings
-au FileType cpp call SetupForCLang()
-au FileType c set et sw=4 sts=4 cinoptions=l1,g0.5s,h0.5s,i2s,+2s,(0,W2s
 au BufNewFile *.cpp,*.h,*.cc 0r ~/.vim/skeleton/cpp.cpp
+autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd BufNewFile,BufRead *.h,*.cpp,*.cc set syntax=cpp11
 let g:clang_format#code_style="Google"
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-
-" Use C++11 syntax
-au BufNewFile,BufRead *.cpp set syntax=cpp11
+let g:clang_format#auto_format=1
 
 " Protobuf syntax
 augroup filetype
@@ -274,12 +193,7 @@ let g:airline_powerline_fonts=1
 
 " Highlight a line if it exceeds 80 chars
 "
-if exists('+colorcolumn')
-	set colorcolumn=80
-else
-	"" Vim <= 7.3
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+set colorcolumn=80
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
