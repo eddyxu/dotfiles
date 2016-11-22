@@ -52,7 +52,7 @@ if [ -d /usr/local/opt/go/libexec/bin ]; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
-export PATH=$PATH:~/work/hadev
+export PATH=$PATH:~/work/hadev:~/.cargo/bin
 if [ -d /usr/local/Cellar/git ]; then
 	export PATH=$PATH:`cd /usr/local/Cellar/git/*/share/git-core/contrib/workdir; pwd`
 elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
@@ -86,3 +86,5 @@ fi
 if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
+
+export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
