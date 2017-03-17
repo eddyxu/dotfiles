@@ -37,6 +37,13 @@ Plugin 'lifepillar/pgsql.vim.git'
 Plugin 'hashivim/vim-hashicorp-tools'
 Plugin 'fatih/vim-nginx'
 
+" JS
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" Docker
+Plugin 'ekalinin/Dockerfile.vim'
+
 " Rust
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
@@ -205,3 +212,9 @@ if filereadable(glob("~/.vimrc.local"))
 endif
 
 let g:ycm_confirm_extra_conf = 0
+
+" javascript
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
