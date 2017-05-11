@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'AndrewRadev/splitjoin.vim'
 
+
 " C++ plugins
 Plugin 'rhysd/vim-clang-format'
 Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
@@ -18,6 +19,8 @@ Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 
 "Plugin 'scrooloose/syntastic'  # replace with 'w0rp/ale' in vim 8
 Plugin 'w0rp/ale'
+Plugin 'Chiel92/vim-autoformat'
+
 Plugin 'a.vim'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'vim-airline/vim-airline'
@@ -90,13 +93,13 @@ set term=xterm-256color
 
 " general settings
 function RemoveTrailingWhitespace()
-  if &ft != "diff"
-    let b:curcol = col(".")
-	let b:curline = line(".")
-	silent! %s/\s\+$//
-	silent! %s/\(\s*\n\)\+\%$//
-    call cursor(b:curline, b:curcol)
-  endif
+	if &ft != "diff"
+		let b:curcol = col(".")
+		let b:curline = line(".")
+		silent! %s/\s\+$//
+		silent! %s/\(\s*\n\)\+\%$//
+		call cursor(b:curline, b:curcol)
+	endif
 endfunction
 au BufWritePre * call RemoveTrailingWhitespace()
 
@@ -160,11 +163,14 @@ map <C-F4> <ESC>:bd<RETURN>
 map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
 
+au BufWrite * :Autoformat
+
 " Python settings
 au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
 au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 let g:ropevim_vim_completion=0
 let g:ropevim_extended_complete=0
+let g:formatter_yapf_style = 'pep8'
 
 " C/C++ settings
 au BufNewFile *.cpp,*.h,*.cc 0r ~/.vim/skeleton/cpp.cpp
@@ -179,44 +185,44 @@ augroup filetype
 	au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
-" Bash
-au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
-au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
+	" Bash
+	au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
+	au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
 
-" Use tabs in makefiles
-au FileType make,automake set noexpandtab ts=8 st=8 sw=8
+	" Use tabs in makefiles
+	au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
-" json
-auto FileType json set conceallevel=0
+	" json
+	auto FileType json set conceallevel=0
 
-" set for make
-au BufEnter *_test.cpp set makeprg=make\ check\ %:r
+	" set for make
+	au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
-" Support for [:VIM_EVAL:]foo[:END_EVAL:]
-autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+	" Support for [:VIM_EVAL:]foo[:END_EVAL:]
+	autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
-" Airline use Powerline's fonts
-let g:airline_powerline_fonts=1
+	" Airline use Powerline's fonts
+	let g:airline_powerline_fonts=1
 
-" Highlight a line if it exceeds 80 chars
-"
-set colorcolumn=80
+	" Highlight a line if it exceeds 80 chars
+	"
+	set colorcolumn=80
 
-if filereadable(glob("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
+	if filereadable(glob("~/.vimrc.local"))
+		source ~/.vimrc.local
+	endif
 
-let g:ycm_confirm_extra_conf = 0
+	let g:ycm_confirm_extra_conf = 0
 
-" javascript
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
+	" javascript
+	let g:javascript_plugin_flow = 1
+	let g:javascript_plugin_jsdoc = 1
+	au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
+	let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
-"rust
-let g:rustfmt_autosave = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+	"rust
+	let g:rustfmt_autosave = 1
+	au FileType rust nmap gd <Plug>(rust-def)
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
