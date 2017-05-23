@@ -33,9 +33,13 @@ Plugin 'kien/ctrlp.vim.git'
 Plugin 'majutsushi/tagbar.git'
 "'Plugin 'mitechie/pyflakes-pathogen.git'
 Plugin 'reinh/vim-makegreen.git'
+
+" Python
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'nvie/vim-flake8'
 "Plugin 'vim-scripts/pep8.git'
+Plugin 'jmcantrell/vim-virtualenv'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'lifepillar/pgsql.vim.git'
 Plugin 'hashivim/vim-hashicorp-tools'
@@ -185,44 +189,44 @@ augroup filetype
 	au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
-	" Bash
-	au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
-	au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
+" Bash
+au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
+au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
 
-	" Use tabs in makefiles
-	au FileType make,automake set noexpandtab ts=8 st=8 sw=8
+" Use tabs in makefiles
+au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
-	" json
-	auto FileType json set conceallevel=0
+" json
+auto FileType json set conceallevel=0
 
-	" set for make
-	au BufEnter *_test.cpp set makeprg=make\ check\ %:r
+" set for make
+au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
-	" Support for [:VIM_EVAL:]foo[:END_EVAL:]
-	autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+" Support for [:VIM_EVAL:]foo[:END_EVAL:]
+autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
-	" Airline use Powerline's fonts
-	let g:airline_powerline_fonts=1
+" Airline use Powerline's fonts
+let g:airline_powerline_fonts=1
 
-	" Highlight a line if it exceeds 80 chars
-	"
-	set colorcolumn=80
+" Highlight a line if it exceeds 80 chars
+"
+set colorcolumn=80
 
-	if filereadable(glob("~/.vimrc.local"))
-		source ~/.vimrc.local
-	endif
+if filereadable(glob("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
 
-	let g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf = 0
 
-	" javascript
-	let g:javascript_plugin_flow = 1
-	let g:javascript_plugin_jsdoc = 1
-	au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
-	let g:syntastic_javascript_checkers = ['eslint', 'flow']
+" javascript
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
-	"rust
-	let g:rustfmt_autosave = 1
-	au FileType rust nmap gd <Plug>(rust-def)
-	au FileType rust nmap gs <Plug>(rust-def-split)
-	au FileType rust nmap gx <Plug>(rust-def-vertical)
-	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+"rust
+let g:rustfmt_autosave = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
