@@ -167,7 +167,7 @@ map <C-F4> <ESC>:bd<RETURN>
 map <C-Left> <ESC>:bp!<RETURN>
 map <C-Right> <ESC>:bn!<RETURN>
 
-au BufWrite * :Autoformat
+au BufWrite *.sh :Autoformat
 
 " Python settings
 au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
