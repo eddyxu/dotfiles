@@ -13,8 +13,8 @@ Plugin 'AndrewRadev/splitjoin.vim'
 
 
 " C++ plugins
-Plugin 'rhysd/vim-clang-format'
-Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
+"Plugin 'rhysd/vim-clang-format'
+"Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plugin 'Valloric/YouCompleteMe'
 
 "Plugin 'scrooloose/syntastic'  # replace with 'w0rp/ale' in vim 8
@@ -46,9 +46,9 @@ Plugin 'hashivim/vim-hashicorp-tools'
 Plugin 'fatih/vim-nginx'
 
 " JS
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
+"Plugin 'flowtype/vim-flow'
 
 " Docker
 Plugin 'ekalinin/Dockerfile.vim'

@@ -24,11 +24,11 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew osx pip fabric debian command-not-found
-go mvn aws docker docker-compose heroku gulp nvm)
+plugins=(git git-extras brew osx pip debian command-not-found
+go mvn docker docker-compose heroku nvm)
 
 if [ -d /usr/local/share/zsh-completions ]; then
-fpath=(/usr/local/share/zsh-completions $fpath)
+  fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -40,7 +40,7 @@ fi
 # Customize to your needs...
 OS=`uname`
 export EDITOR=vim
-export PATH=~/bin:/usr/local/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$PATH:/usr/local/opt/gettext/bin
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
@@ -59,7 +59,7 @@ elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
   export PATH=$PATH:/usr/share/doc/git/contrib/workdir/
 fi
 
-export MAVEN_OPTS="-Xmx8192m -Dmaven.javadoc.skip=true"
+export MAVEN_OPTS="-Xmx8192m -Dmaven.javadoc.skip=true -DskipShade"
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 elif [ -d /usr/lib/jvm/java-8-oracle ]; then
