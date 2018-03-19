@@ -1,66 +1,70 @@
 set nocompatible
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has('nvim')
+	call plug#begin('~/.local/share/nvim/plugged')
+else
+	call plug#begin('~/.vim/plugged')
+endif
 
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/Vundle.vim'
+Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'fatih/vim-go'
-Plugin 'AndrewRadev/splitjoin.vim'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugs' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'AndrewRadev/splitjoin.vim'
 
 
 " C++ plugins
-"Plugin 'rhysd/vim-clang-format'
-"Plugin 'vim-scripts/Cpp11-Syntax-Support.git'
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'rhysd/vim-clang-format'
+"Plug 'vim-scripts/Cpp11-Syntax-Support.git'
+"Plug 'Valloric/YouCompleteMe'
 
-"Plugin 'scrooloose/syntastic'  # replace with 'w0rp/ale' in vim 8
-Plugin 'w0rp/ale'
-Plugin 'Chiel92/vim-autoformat'
+"Plug 'scrooloose/syntastic'  # replace with 'w0rp/ale' in vim 8
+Plug 'w0rp/ale'
+Plug 'Chiel92/vim-autoformat'
 
-Plugin 'a.vim'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'funorpain/vim-cpplint.git'
-"Plugin 'hynek/vim-python-pep8-indent.git'
-Plugin 'klen/python-mode'
-Plugin 'kien/ctrlp.vim.git'
-"Plugin 'lambdalisue/nose.vim.git'
-Plugin 'majutsushi/tagbar.git'
-"'Plugin 'mitechie/pyflakes-pathogen.git'
-Plugin 'reinh/vim-makegreen.git'
 
 " Python
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'nvie/vim-flake8'
-"Plugin 'vim-scripts/pep8.git'
-Plugin 'jmcantrell/vim-virtualenv'
+Plug 'zchee/deoplete-jedi'
+"Plug 'tpope/vim-fugitive'
+"Plug 'nvie/vim-flake8'
+"Plug 'vim-scripts/pep8.git'
+"Plug 'jmcantrell/vim-virtualenv'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'lifepillar/pgsql.vim.git'
-Plugin 'hashivim/vim-hashicorp-tools'
-Plugin 'fatih/vim-nginx'
+Plug 'scrooloose/nerdtree'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'fatih/vim-nginx'
 
 " JS
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx'
-"Plugin 'flowtype/vim-flow'
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
+"Plug 'flowtype/vim-flow'
 
 " Docker
-Plugin 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Rust
-Plugin 'rust-lang/rust.vim'
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-
-call vundle#end()
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+call plug#end()
 filetype plugin indent on
 
 set nobackup
@@ -96,20 +100,6 @@ set noexpandtab
 set smarttab
 set secure
 set encoding=utf-8
-set term=xterm-256color
-
-" general settings
-function RemoveTrailingWhitespace()
-	if &ft != "diff"
-		let b:curcol = col(".")
-		let b:curline = line(".")
-		silent! %s/\s\+$//
-		silent! %s/\(\s*\n\)\+\%$//
-		call cursor(b:curline, b:curcol)
-	endif
-endfunction
-au BufWritePre * call RemoveTrailingWhitespace()
-
 
 " Taglist
 let Tlist_Sort_Type = "name" " order by
@@ -125,21 +115,15 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 map <C-C> <ESC>:TagbarToggle<CR>
 
-" for c/h switch
-let g:alternateExtensions_h = "c,cpp,cc,m,inl"
-let g:alternateExtensions_cpp = "h"
-let g:alternateExtensions_c = "h"
-let g:alternateExtensions_m = "h"
-let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:/include/src/g,reg:/src/include/g'
-map <F3> <ESC>:A<CR>
+let g:LanguageClient_serverCommands = {
+	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'python' : ['pyls'],
+	\ 'javascript': ['javascript-typescript-stdio'],
+	\ }
 
-" Supertab
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
-
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
@@ -179,14 +163,6 @@ let g:ropevim_vim_completion=0
 let g:ropevim_extended_complete=0
 let g:formatter_yapf_style = 'pep8'
 
-" C/C++ settings
-au BufNewFile *.cpp,*.h,*.cc 0r ~/.vim/skeleton/cpp.cpp
-autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-autocmd BufNewFile,BufRead *.h,*.cpp,*.cc set syntax=cpp11
-let g:clang_format#code_style="Google"
-let g:clang_format#auto_format=1
-
 " Protobuf syntax
 augroup filetype
 	au! BufRead,BufNewFile *.proto setfiletype proto
@@ -220,6 +196,8 @@ if filereadable(glob("~/.vimrc.local"))
 endif
 
 let g:ycm_confirm_extra_conf = 0
+
+let g:deoplete#enable_at_startup = 1
 
 " javascript
 let g:javascript_plugin_flow = 1
