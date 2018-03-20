@@ -2,6 +2,7 @@
 [user]
 	name = Lei Xu
 	email = lei@cloudera.com
+	signingkey = B6ACA50A
 [alias]
 	st = status
 	rb = svn rebase
