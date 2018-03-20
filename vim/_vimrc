@@ -30,12 +30,6 @@ Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'AndrewRadev/splitjoin.vim'
 
-
-" C++ plugins
-"Plug 'rhysd/vim-clang-format'
-"Plug 'vim-scripts/Cpp11-Syntax-Support.git'
-"Plug 'Valloric/YouCompleteMe'
-
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 
@@ -131,6 +125,9 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
 let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
 
+" for fzf
+map <C-P> <ESC>:Files<RETURN>
+
 " autocomplet parenthess
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
@@ -196,9 +193,6 @@ set colorcolumn=80
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
-
-let g:ycm_confirm_extra_conf = 0
-
 
 "rust
 let g:rustfmt_autosave = 1

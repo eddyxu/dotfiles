@@ -19,4 +19,8 @@ if ! grep "source $VIMRC" ~/.vimrc >/dev/null; then
   echo "Back up ~/.vimrc to ~/.vimrc.bak "
   cp ~/.vimrc ~/.vimrc.bak
   echo "source $VIMRC" >> ~/.vimrc
+
+
 fi
+
+vim +PlugInstall! +qall
