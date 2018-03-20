@@ -10,6 +10,8 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -34,7 +36,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'vim-scripts/Cpp11-Syntax-Support.git'
 "Plug 'Valloric/YouCompleteMe'
 
-"Plug 'scrooloose/syntastic'  # replace with 'w0rp/ale' in vim 8
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 
@@ -101,6 +102,7 @@ set smarttab
 set secure
 set encoding=utf-8
 
+let g:deoplete#enable_at_startup = 1
 " Taglist
 let Tlist_Sort_Type = "name" " order by
 let Tlist_Use_Right_Window = 1 " split to the right side of the screen
@@ -197,13 +199,6 @@ endif
 
 let g:ycm_confirm_extra_conf = 0
 
-let g:deoplete#enable_at_startup = 1
-
-" javascript
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-au FileType javascript,javascript.jsx set tabstop=2 shiftwidth=2 expandtab nocindent
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 "rust
 let g:rustfmt_autosave = 1
