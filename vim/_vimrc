@@ -6,12 +6,21 @@ else
 	call plug#begin('~/.vim/plugged')
 endif
 
+" Color and appearances 
 Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" General settings
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+
+" General programming settings, usable for all languages.
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'w0rp/ale'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -26,12 +35,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'fatih/vim-go'
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'AndrewRadev/splitjoin.vim'
-
-Plug 'w0rp/ale'
-Plug 'Chiel92/vim-autoformat'
 
 
 " Python
@@ -41,14 +47,10 @@ Plug 'zchee/deoplete-jedi'
 "Plug 'vim-scripts/pep8.git'
 "Plug 'jmcantrell/vim-virtualenv'
 
-Plug 'scrooloose/nerdtree'
-Plug 'hashivim/vim-hashicorp-tools'
-Plug 'fatih/vim-nginx'
 
 " JS
-"Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
-"Plug 'flowtype/vim-flow'
+Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -60,6 +62,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
+
 filetype plugin indent on
 
 set nobackup
@@ -112,7 +115,7 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <C-C> <ESC>:TagbarToggle<CR>
 
 let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'rust': ['rustup', 'run', 'stable', 'rls'],
 	\ 'python' : ['pyls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ }
@@ -196,14 +199,7 @@ endif
 
 "rust
 let g:rustfmt_autosave = 1
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+let g:autofmt_autosave = 1
+autocmd BufReadPost *.rs setlocal filetype=rust
+let g:LanguageClient_autoStart = 1
+
