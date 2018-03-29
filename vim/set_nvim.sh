@@ -5,4 +5,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 pip3 install --upgrade neovim
 mkdir -p ~/.config/nvim
 
-nvim +PlugInstall! +qall
+nvim +PlugInstall +UpdateRemotePlugins +qa
