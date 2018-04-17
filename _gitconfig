@@ -1,7 +1,7 @@
 # vim: ft=gitconfig
 [user]
 	name = Lei Xu
-	email = lei@cloudera.com
+	email = eddyxu@gmail.com
 	signingkey = B6ACA50A
 [alias]
 	st = status

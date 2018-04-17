@@ -25,7 +25,7 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras brew osx pip debian command-not-found
-go mvn docker docker-compose heroku nvm)
+go mvn docker docker-compose nvm)
 
 if [ -d /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
@@ -79,10 +79,6 @@ fi
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   . /usr/local/bin/virtualenvwrapper.sh
-fi
-
-if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
-  source /usr/local/share/zsh/site-functions/_aws
 fi
 
 export PATH="/usr/local/opt/protobuf@2.5/bin:$PATH"
