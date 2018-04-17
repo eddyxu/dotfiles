@@ -45,11 +45,6 @@ if [ -f /usr/local/etc/bash_completion ]; then
 	. /usr/local/etc/bash_completion
 fi
 
-# FreeBSD
-if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
-	. /usr/local/share/bash-completion/bash_completion.sh
-fi
-
 export PATH=~/bin:~/work/go/bin:$PATH
 export EDITOR=vim
 export GOPATH=~/work/go
