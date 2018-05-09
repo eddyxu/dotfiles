@@ -40,17 +40,13 @@ fi
 # Customize to your needs...
 OS=`uname`
 export EDITOR=vim
-export PATH=~/bin:/usr/local/bin:$PATH:/usr/local/opt/gettext/bin
+export PATH=~/bin:/usr/local/bin:$PATH
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
-
-if [ -d /usr/local/opt/go/libexec/bin ]; then
-  export PATH=$PATH:/usr/local/opt/go/libexec/bin
-fi
 
 export PATH=$PATH:~/work/hadev:~/.cargo/bin
 if [ -d /usr/local/Cellar/git ]; then
@@ -64,13 +60,6 @@ if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 elif [ -d /usr/lib/jvm/java-8-oracle ]; then
   export JAVA_HOME='/usr/lib/jvm/java-8-oracle'
-elif [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
-  export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
-fi
-
-if [ $OS = 'Darwin' ]; then
-  export CXX=clang++
-  export CC=clang
 fi
 
 if [ -f ~/work/hadev/hadoop-dev.sh ]; then

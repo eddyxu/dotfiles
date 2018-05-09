@@ -8,6 +8,7 @@ endif
 
 " Color and appearances 
 Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
+Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -36,12 +37,12 @@ else
 endif
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
 " Python
-Plug 'zchee/deoplete-jedi'
+"Plug 'zchee/deoplete-jedi'
 "Plug 'tpope/vim-fugitive'
 "Plug 'nvie/vim-flake8'
 "Plug 'vim-scripts/pep8.git'
@@ -168,6 +169,11 @@ augroup filetype
 	au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
+" Go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
 " Bash
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
 au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
@@ -177,9 +183,6 @@ au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " json
 auto FileType json set conceallevel=0
-
-" set for make
-au BufEnter *_test.cpp set makeprg=make\ check\ %:r
 
 " Support for [:VIM_EVAL:]foo[:END_EVAL:]
 autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
