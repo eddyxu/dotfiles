@@ -166,13 +166,20 @@ au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,fi
 
 " Protobuf syntax
 augroup filetype
-	au! BufRead,BufNewFile *.proto setfiletype proto
+  au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
 " Go settings
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_fmt_command = "goimports"
 
 " Bash
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
@@ -189,6 +196,7 @@ autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(s
 
 " Airline use Powerline's fonts
 let g:airline_powerline_fonts=1
+let g:airline#extensions#ale#enabled = 1
 
 " Highlight a line if it exceeds 80 chars
 "

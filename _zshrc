@@ -25,7 +25,7 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras brew osx pip debian command-not-found
-go mvn docker docker-compose nvm)
+go docker docker-compose)
 
 if [ -d /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
@@ -40,36 +40,23 @@ fi
 # Customize to your needs...
 OS=`uname`
 export EDITOR=vim
-export PATH=~/bin:/usr/local/bin:$PATH
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
+export PATH=/usr/local/bin:$PATH:$GOPATH/bin:~/.cargo/bin
 
-export PATH=$PATH:~/work/hadev:~/.cargo/bin
+
 if [ -d /usr/local/Cellar/git ]; then
 	export PATH=$PATH:`cd /usr/local/Cellar/git/*/share/git-core/contrib/workdir; pwd`
 elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
   export PATH=$PATH:/usr/share/doc/git/contrib/workdir/
 fi
 
-export MAVEN_OPTS="-Xmx8192m -Dmaven.javadoc.skip=true -DskipShade"
-if [ -f /usr/libexec/java_home ]; then
-	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-elif [ -d /usr/lib/jvm/java-8-oracle ]; then
-  export JAVA_HOME='/usr/lib/jvm/java-8-oracle'
-fi
-
-if [ -f ~/work/hadev/hadoop-dev.sh ]; then
-  source ~/work/hadev/hadoop-dev.sh
-fi
-
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   . /usr/local/bin/virtualenvwrapper.sh
 fi
-
-export PATH="/usr/local/opt/protobuf@2.5/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
