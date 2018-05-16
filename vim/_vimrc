@@ -50,8 +50,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
 " JS
-Plug 'mhartington/nvim-typescript'
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'mhartington/nvim-typescript'
+"Plug 'HerringtonDarkholme/yats.vim'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
