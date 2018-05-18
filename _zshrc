@@ -39,14 +39,14 @@ fi
 
 # Customize to your needs...
 OS=`uname`
-export EDITOR=vim
+export EDITOR=nvim
 
 if [ -d $HOME/work/go ]; then
 	export GOPATH=$HOME/work/go
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
-export PATH=/usr/local/bin:$PATH:$GOPATH/bin:~/.cargo/bin
+export PATH=/usr/local/bin:$PATH:~/.cargo/bin
 
 
 if [ -d /usr/local/Cellar/git ]; then
@@ -59,4 +59,8 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   . /usr/local/bin/virtualenvwrapper.sh
 fi
 
+alias vim=nvim
+alias vi=nvim
+
+export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude vender --exclude node_modules'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
