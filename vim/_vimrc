@@ -40,7 +40,6 @@ endif
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
 " Python
@@ -61,9 +60,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
