@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
 
 " General programming settings, usable for all languages.
 "Plug 'ludovicchabant/vim-gutentags'
