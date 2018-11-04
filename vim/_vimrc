@@ -28,26 +28,17 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-
-" Python
-"Plug 'zchee/deoplete-jedi'
-"Plug 'tpope/vim-fugitive'
-"Plug 'nvie/vim-flake8'
-"Plug 'vim-scripts/pep8.git'
-"Plug 'jmcantrell/vim-virtualenv'
-
 
 " JS
 "Plug 'mhartington/nvim-typescript'
@@ -112,12 +103,6 @@ set tags=~/.vim/tags,~/tags,./tags,../tags,../../tags
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 map <C-C> <ESC>:TagbarToggle<CR>
-
-let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'stable', 'rls'],
-	\ 'python' : ['pyls'],
-	\ 'javascript': ['javascript-typescript-stdio'],
-	\ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
