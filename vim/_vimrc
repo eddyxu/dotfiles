@@ -24,14 +24,9 @@ Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
-Plug 'neovim/nvim-lsp'
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ }
+" Language server
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -42,10 +37,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
-
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'prabirshrestha/async.vim'
 
 call plug#end()
 
@@ -184,9 +175,13 @@ if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
 
-"rust
-let g:rustfmt_autosave = 1
-let g:autofmt_autosave = 1
-autocmd BufReadPost *.rs setlocal filetype=rust
-let g:LanguageClient_autoStart = 1
 
+"""" Coc """"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
