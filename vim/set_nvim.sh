@@ -10,3 +10,4 @@ mkdir -p ~/.config/nvim
 cp _vimrc ~/.config/nvim/init.vim
 
 nvim +PlugInstall +UpdateRemotePlugins +qa
+nvim -c 'CocInstall -sync coc-python coc-rust-analyzer coc-go|q'
