@@ -124,10 +124,6 @@ map <C-Right> <ESC>:bn!<RETURN>
 
 au BufWrite *.sh :Autoformat
 
-" Python settings
-au FileType python set et tw=79 ts=4 sts=4 sw=4 autoindent sta
-au FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
 " Protobuf syntax
 augroup filetype
   au! BufRead,BufNewFile *.proto setfiletype proto
@@ -147,7 +143,6 @@ let g:go_fmt_command = "goimports"
 
 " Bash
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
-au bufnewfile *.sh 0r ~/.vim/skeleton/bash.sh
 
 " Use tabs in makefiles
 au FileType make,automake set noexpandtab ts=8 st=8 sw=8
@@ -228,3 +223,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
