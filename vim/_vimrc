@@ -9,6 +9,7 @@ endif
 " Color and appearances 
 Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 Plug 'joshdick/onedark.vim'
+Plug 'jacoborus/tender.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -20,7 +21,8 @@ Plug 'mileszs/ack.vim'
 
 " General programming settings, usable for all languages.
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
+Plug 'airblade/vim-gitgutter'
+Plug 'liuchengxu/vista.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
@@ -39,13 +41,18 @@ call plug#end()
 
 filetype plugin indent on
 
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 set nobackup
 set autowrite
 set clipboard=unnamed
 syntax on
 set background=dark
-let g:solarized_termtrans=1
-colorscheme solarized
+"let g:solarized_termtrans=1
+"colorscheme solarized
+colorscheme tender
 set laststatus=2
 set visualbell
 set nohlsearch
@@ -73,19 +80,6 @@ set smarttab
 set secure
 set encoding=utf-8
 
-" Taglist
-let Tlist_Sort_Type = "name" " order by
-let Tlist_Use_Right_Window = 1 " split to the right side of the screen
-let Tlist_Show_Menu = 1
-let Tlist_Display_Prototype = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Enable_Fold_Column = 0
-"map <C-C> <ESC>:Tlist<RETURN>
-set tags=~/.vim/tags,~/tags,./tags,../tags,../../tags
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-map <C-C> <ESC>:TagbarToggle<CR>
 
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
@@ -150,6 +144,7 @@ auto FileType json set conceallevel=0
 " Airline use Powerline's fonts
 let g:airline_powerline_fonts=1
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme = 'tender'
 
 " Highlight a line if it exceeds 80 chars
 "
@@ -228,3 +223,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+
+""" Vista
+
+let g:vista_default_executive = 'ctags'
+let g:vista_executive_for = {
+  \ 'rust': 'coc',
+  \ 'python': 'coc',
+  \ }
+
+map <C-C> <ESC>:Vista!!<CR>
