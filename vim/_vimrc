@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
 
 " General programming settings, usable for all languages.
+Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
@@ -86,10 +87,6 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 map <C-C> <ESC>:TagbarToggle<CR>
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
 let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
@@ -149,9 +146,6 @@ au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " json
 auto FileType json set conceallevel=0
-
-" Support for [:VIM_EVAL:]foo[:END_EVAL:]
-autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 
 " Airline use Powerline's fonts
 let g:airline_powerline_fonts=1
