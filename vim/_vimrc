@@ -81,6 +81,9 @@ set secure
 set encoding=utf-8
 
 
+" General setup
+autocmd BufWritePre * :%s/\s\+$//e
+
 " for NERDTree
 map <C-X><C-C> <ESC>:NERDTree<RETURN>
 let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
@@ -146,9 +149,9 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme = 'tender'
 
-" Highlight a line if it exceeds 80 chars
+" Highlight a line if it exceeds 100 chars
 "
-set colorcolumn=80
+set colorcolumn=100
 
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local

@@ -61,6 +61,7 @@ fi
 
 alias vim=nvim
 alias vi=nvim
+alias icat="kitty +kitten icat"
 
 export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude vender --exclude node_modules'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
