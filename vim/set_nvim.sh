@@ -8,7 +8,5 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 pip3 install --upgrade neovim
 mkdir -p ~/.config/nvim
 cp _vimrc ~/.config/nvim/init.vim
-cp coc-settings.json ~/.config/nvim
 
 nvim +PlugInstall +UpdateRemotePlugins +qa
-nvim -c 'CocInstall -sync coc-python coc-rust-analyzer coc-go coc-json|q'
