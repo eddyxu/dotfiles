@@ -46,7 +46,7 @@ if [ -d $HOME/work/go ]; then
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
-export PATH=/usr/local/bin:$PATH:/sbin/bin:~/.cargo/bin:~/bin
+export PATH=/usr/local/bin:$PATH:/snap/bin:~/.cargo/bin:~/bin
 
 
 if [ -d /usr/local/Cellar/git ]; then
