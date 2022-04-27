@@ -8,6 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gentoo"
 #ZSH_THEME="agnoster"
+#ZSH_THEME="muse"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -24,7 +25,7 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew osx pip debian command-not-found
+plugins=(git git-extras brew macos pip debian command-not-found
 golang docker docker-compose)
 
 if [ -d /usr/local/share/zsh-completions ]; then
@@ -46,7 +47,7 @@ if [ -d $HOME/work/go ]; then
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
-export PATH=/usr/local/bin:$PATH:/snap/bin:~/.cargo/bin:~/bin
+export PATH=/usr/local/bin:$PATH:/usr/local/go/bin:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin
 
 
 if [ -d /usr/local/Cellar/git ]; then
@@ -61,7 +62,6 @@ fi
 
 alias vim=nvim
 alias vi=nvim
-alias icat="kitty +kitten icat"
 
 export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude vender --exclude node_modules'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -81,3 +81,17 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export MKL_DEBUG_CPU_TYPE=5
+
+complete -C '/usr/local/bin/aws_completer' aws
+
+alias ecr_login="aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 948856271544.dkr.ecr.us-west-2.amazonaws.com"
+
+export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain eto --domain-owner 948856271544 --query authorizationToken --output text`
+poetry config repositories.eto https://eto-948856271544.d.codeartifact.us-west-2.amazonaws.com/pypi/eto-pypi/
+poetry config http-basic.eto aws $CODEARTIFACT_AUTH_TOKEN
+
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 948856271544.dkr.ecr.us-west-2.amazonaws.com

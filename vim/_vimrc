@@ -6,7 +6,7 @@ else
 	call plug#begin('~/.vim/plugged')
 endif
 
-" Color and appearances 
+" Color and appearances
 Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 Plug 'joshdick/onedark.vim'
 Plug 'jacoborus/tender.vim'
@@ -27,12 +27,11 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
 
-" Language server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Rust
+Plug 'rust-lang/rust.vim'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -135,6 +134,9 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_fmt_command = "goimports"
 
+" Rust sttings
+let g:rustfmt_autosave = 1
+
 " Bash
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
 
@@ -143,6 +145,17 @@ au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " json
 auto FileType json set conceallevel=0
+
+" Ale
+let g:ale_linters = {
+\  'rust': ['analyzer'],
+\}
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+
+nmap <silent> gd :ALEGoToDefinition<CR>
+nmap <silent> gy :ALEGoToTypeDefinition<CR>
 
 " Airline use Powerline's fonts
 let g:airline_powerline_fonts=1
@@ -168,71 +181,7 @@ else
   set signcolumn=yes
 endif
 
-"""" Coc """"
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
 """ Vista
 
 let g:vista_default_executive = 'ctags'
-let g:vista_executive_for = {
-  \ 'rust': 'coc',
-  \ 'python': 'coc',
-  \ }
-
-map <C-C> <ESC>:Vista!!<CR>
+uap <C-C> <ESC>:Vista!!<CR>
