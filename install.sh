@@ -5,7 +5,3 @@
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ln -s -f ${PWD}/_zshrc ~/.zshrc
 
-
-# Kitty
-mkdir -p ~/.config/kitty
-ln -s -f ${PWD}/kitty.conf ~/.config/kitty
