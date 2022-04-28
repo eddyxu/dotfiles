@@ -25,7 +25,7 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew macos pip debian command-not-found golang docker docker-compose aws)
+plugins=(git git-extras brew macos pip debian command-not-found rust docker docker-compose aws)
 
 if [ -d /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
@@ -65,23 +65,24 @@ alias vi=nvim
 export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude vender --exclude node_modules'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-export JAVA_HOME=`/usr/libexec/java_home`
-complete -C '/opt/homebrew/bin/aws_completer' aws
+if [ $OS = 'Darwin' ]; then
+  export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+  export JAVA_HOME=`/usr/libexec/java_home`
+  complete -C '/opt/homebrew/bin/aws_completer' aws
+  export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
+fi
 
-
-export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/lei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/lei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/lei/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/lei/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/lei/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lei/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/lei/miniconda3/bin:$PATH"
+        export PATH="/home/lei/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -92,5 +93,5 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 export MKL_DEBUG_CPU_TYPE=5
 
-complete -C '/usr/local/bin/aws_completer' aws
 
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
