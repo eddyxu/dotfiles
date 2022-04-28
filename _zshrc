@@ -48,17 +48,6 @@ fi
 
 export PATH=/opt/homebrew/bin:$PATH:/usr/local/go/bin:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin
 
-
-if [ -d /usr/local/Cellar/git ]; then
-	export PATH=$PATH:`cd /usr/local/Cellar/git/*/share/git-core/contrib/workdir; pwd`
-elif [ -d /usr/share/doc/git/contrib/workdir/ ]; then
-  export PATH=$PATH:/usr/share/doc/git/contrib/workdir/
-fi
-
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-  . /usr/local/bin/virtualenvwrapper.sh
-fi
-
 alias vim=nvim
 alias vi=nvim
 
