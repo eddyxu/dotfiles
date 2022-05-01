@@ -16,7 +16,9 @@ Plug 'vim-airline/vim-airline-themes'
 " General settings
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mileszs/ack.vim'
 
 " General programming settings, usable for all languages.
@@ -34,7 +36,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
-
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -86,9 +87,14 @@ set encoding=utf-8
 " General setup
 autocmd BufWritePre * :%s/\s\+$//e
 
-" for NERDTree
-map <C-X><C-C> <ESC>:NERDTree<RETURN>
+" for NERDTred
+" map <C-X><C-C> <ESC>:NERDTree<RETURN>
 let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
+
+" for NvimTree
+lua require'nvim-tree'.setup {}
+
+map <C-X><C-C> <ESC>:NvimTreeToggle<CR>
 
 " for fzf
 map <C-P> <ESC>:Files<RETURN>
@@ -168,23 +174,15 @@ let g:airline_theme = 'tender'
 " Highlight a line if it exceeds 100 chars
 "
 set colorcolumn=100
-
-if filereadable(glob("~/.vimrc.local"))
-	source ~/.vimrc.local
-endif
-
 set updatetime=300
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=number
 
 """ Vista
 
 let g:vista_default_executive = 'ctags'
 map <C-C> <ESC>:Vista!!<CR>
+
+if filereadable(glob("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
+
