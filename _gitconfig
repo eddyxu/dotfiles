@@ -4,7 +4,6 @@
 	email = eddyxu@gmail.com
 [alias]
 	st = status
-	rb = svn rebase
 	ci = commit -a
 	co = checkout
 	di = diff
