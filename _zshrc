@@ -51,7 +51,7 @@ export PATH=/opt/homebrew/bin:$PATH:/usr/local/go/bin:/snap/bin:~/.cargo/bin:~/b
 alias vim=nvim
 alias vi=nvim
 
-export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude vender --exclude node_modules'
+export FZF_DEFAULT_COMMAND='fd --type f -E .git -E vender -E node_modules -E build -E target -E spark-warehouse'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ $OS = 'Darwin' ]; then

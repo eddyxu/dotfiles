@@ -37,9 +37,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
-" Docker
-Plug 'ekalinin/Dockerfile.vim'
-
 call plug#end()
 
 filetype plugin indent on
