@@ -7,9 +7,7 @@ else
 endif
 
 " Color and appearances
-Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
-Plug 'joshdick/onedark.vim'
-Plug 'jacoborus/tender.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -37,6 +35,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
+" Docker
+Plug 'ekalinin/Dockerfile.vim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -52,7 +53,7 @@ syntax on
 set background=dark
 "let g:solarized_termtrans=1
 "colorscheme solarized
-colorscheme tender
+colorscheme nord
 set laststatus=2
 set visualbell
 set nohlsearch
@@ -147,7 +148,7 @@ let g:rustfmt_autosave = 1
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
 
 " Use tabs in makefiles
-au FileType make,automake set noexpandtab ts=8 sw=8
+au FileType make,automake set noexpandtab ts=8 st=8 sw=8
 
 " json
 auto FileType json set conceallevel=0
@@ -166,7 +167,6 @@ nmap <silent> gy :ALEGoToTypeDefinition<CR>
 " Airline use Powerline's fonts
 let g:airline_powerline_fonts=1
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme = 'tender'
 
 " Highlight a line if it exceeds 100 chars
 "
