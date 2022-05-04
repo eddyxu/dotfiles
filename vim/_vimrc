@@ -208,7 +208,7 @@ EOF
 au FileType sh set sw=2 ts=2 softtabstop=2 expandtab
 
 " Use tabs in makefiles
-au FileType make,automake set noexpandtab ts=8 st=8 sw=8
+au FileType make,automake set noexpandtab ts=8 sw=8
 
 " json
 auto FileType json set conceallevel=0
