@@ -27,11 +27,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Completion
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -48,7 +52,7 @@ call plug#end()
 filetype plugin indent on
 
 if (has("termguicolors"))
- set termguicolors
+	set termguicolors
 endif
 
 set nobackup
@@ -131,7 +135,7 @@ au BufWrite *.sh :Autoformat
 
 " Protobuf syntax
 augroup filetype
-  au! BufRead,BufNewFile *.proto setfiletype proto
+	au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
 " LSP
@@ -167,41 +171,81 @@ lua <<EOF
 local nvim_lsp = require'lspconfig'
 
 local opts = {
-    tools = {
-        autoSetHints = true,
-        hover_with_actions = true,
-        runnables = {
-            use_telescope = true
-        },
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
+	tools = {
+		autoSetHints = true,
+		hover_with_actions = true,
+		runnables = {
+			use_telescope = true
+			},
+		inlay_hints = {
+			show_parameter_hints = false,
+			parameter_hints_prefix = "",
+			other_hints_prefix = "",
+			},
+		},
 
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
+	-- all the opts to send to nvim-lspconfig
+	-- these override the defaults set by rust-tools.nvim
+	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+	server = {
+		-- on_attach is a callback called when the language server attachs to the buffer
+		-- on_attach = on_attach,
+		settings = {
+			-- to enable rust-analyzer settings visit:
+			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+			["rust-analyzer"] = {
+				-- enable clippy on save
+				checkOnSave = {
+					command = "clippy"
+					},
+				}
+			}
+		},
+	}
 
 require('rust-tools').setup(opts)
 
 require'lspconfig'.bashls.setup{}
+
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = {
+		"bash",
+		"go",
+		"python",
+		"rust",
+		"vim",
+		},
+
+	highlight = {
+		enable = true,
+		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+		-- Using this option may slow down your editor, and you may see some duplicate highlights.
+		-- Instead of true it can also be a list of languages
+		additional_vim_regex_highlighting = false,
+		},
+	}
+
+require'cmp'.setup {
+	snippet = {
+		-- REQUIRED - you must specify a snippet engine
+		expand = function(args)
+		vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+		end,
+		},
+	window = {
+		-- completion = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
+		},
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'vsnip' },
+		{ name = 'buffer' },
+		}
+	}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 EOF
 
 " Bash
@@ -215,8 +259,8 @@ auto FileType json set conceallevel=0
 
 " Ale
 let g:ale_linters = {
-\  'rust': ['analyzer'],
-\}
+			\  'rust': ['analyzer'],
+			\}
 let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
