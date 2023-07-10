@@ -10,6 +10,7 @@ endif
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " General settings
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
@@ -147,18 +148,6 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
 " Quick-fix
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
-
-" Go settings
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_fmt_command = "goimports"
 
 " Rust sttings
 let g:rustfmt_autosave = 1
