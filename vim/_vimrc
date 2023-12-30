@@ -15,7 +15,6 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 " General settings
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'scrooloose/nerdtree'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mileszs/ack.vim'
@@ -23,7 +22,6 @@ Plug 'mileszs/ack.vim'
 " General programming settings, usable for all languages.
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'liuchengxu/vista.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
@@ -32,11 +30,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Completion
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 
 " Rust
 Plug 'simrat39/rust-tools.nvim'
@@ -87,13 +80,8 @@ set smarttab
 set secure
 set encoding=utf-8
 
-
 " General setup
 autocmd BufWritePre * :%s/\s\+$//e
-
-" for NERDTred
-" map <C-X><C-C> <ESC>:NERDTree<RETURN>
-let NERDTreeIgnore=['.*\.o$', 'Makefile\.in$', '.*\.a$', '.*\.lo$', '.*\.la$']
 
 " for NvimTree
 lua require'nvim-tree'.setup {}
@@ -194,7 +182,6 @@ require'lspconfig'.bashls.setup{}
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = {
 		"bash",
-		"go",
 		"python",
 		"rust",
 		"vim",

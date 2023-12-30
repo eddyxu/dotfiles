@@ -43,7 +43,7 @@ if [ -d $HOME/work/go ]; then
 	PATH=$PATH:$HOME/work/go/bin
 fi
 
-export PATH=/opt/homebrew/bin:$PATH:/usr/local/go/bin:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin
+export PATH=/opt/homebrew/bin:$PATH:/usr/local/go/bin:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin:~/Library/Python/3.10/bin
 
 alias vim=nvim
 alias vi=nvim
@@ -61,14 +61,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/lei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/lei/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lei/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/lei/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/lei/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/lei/miniconda3/bin:$PATH"
+        export PATH="/Users/lei/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -83,3 +83,6 @@ export MKL_DEBUG_CPU_TYPE=5
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export MODULAR_HOME="/Users/lei/.modular"
+export PATH="/Users/lei/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
