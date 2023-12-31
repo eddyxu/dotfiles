@@ -86,3 +86,5 @@ eval "$(starship init zsh)"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export MODULAR_HOME="/Users/lei/.modular"
 export PATH="/Users/lei/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+export BAT_THEME='Visual Studio Dark+'

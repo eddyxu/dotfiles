@@ -109,7 +109,22 @@ cmp.setup({
 		{ name = 'nvim_lsp_signature_help' },
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
-		{ name = 'buffer', keyword_length = 3 })
+		{ name = 'buffer', keyword_length = 3 },
+		{ name = 'path' }
+	),
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
+				nvim_lsp_signature_help = "[SIG]",
+				luasnip = "[SNIP]",
+				buffer = "[BUF]",
+				path = "[PATH]",
+			})[entry.source.name]
+			return vim_item
+		end
+	}
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
