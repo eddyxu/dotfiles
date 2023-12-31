@@ -39,6 +39,20 @@ require("lazy").setup({
 			require("fzf-lua").setup({})
 		end
 	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "lua", "vim", "vimdoc", "rust", "python", "bash" },
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end
+	},
 	-- Lsp
 	{ "williamboman/mason.nvim" },
 	{ 'williamboman/mason-lspconfig.nvim' },
@@ -54,6 +68,7 @@ require("lazy").setup({
 	{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
 	{ 'saadparwaiz1/cmp_luasnip' },
 	-- Rust
+	{ 'simrat39/rust-tools.nvim' },
 	{
 		'saecki/crates.nvim',
 		tag = 'stable',
@@ -173,6 +188,13 @@ require('lspconfig').rust_analyzer.setup({
 			},
 		},
 	},
+})
+require('rust-tools').setup({
+	tools = {
+		inlay_hints = {
+			auto = true
+		}
+	}
 })
 
 -- python
