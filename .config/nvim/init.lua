@@ -161,11 +161,12 @@ require('lspconfig').rust_analyzer.setup({
 })
 
 -- python
+local on_attach_ruff = function(client, bufnr)
+	client.server_capabilities.hoverProvider = false
+end
 require('lspconfig').pyright.setup({ cappacities = capabilities })
 require('lspconfig').ruff_lsp.setup({
-	on_attach = function(client, bufnr)
-		client.server_capabilities.hoverProvider = false
-	end
+	on_attach = on_attach_ruff,
 	init_options = {
 		settings = {
 			-- Any extra CLI arguments for `ruff` go here.
