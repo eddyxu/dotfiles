@@ -47,9 +47,21 @@ require("lazy").setup({
 		branch = 'v3.x'
 	},
 	{ 'neovim/nvim-lspconfig' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
 	{ 'L3MON4D3/LuaSnip' },
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/cmp-path' },
+	{ 'hrsh7th/nvim-cmp' },
+	{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
+	{ 'saadparwaiz1/cmp_luasnip' },
+	-- Rust
+	{
+		'saecki/crates.nvim',
+		tag = 'stable',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require('crates').setup()
+		end,
+	},
 })
 
 -- General setup
@@ -79,10 +91,29 @@ require('fzf-lua').setup({ 'fzf-native' })
 -- Autocomplete
 local cmp = require('cmp')
 cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered()
+	},
 	mapping = cmp.mapping.preset.insert({
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
-	})
+		["<Up>"] = cmp.mapping.select_prev_item(),
+		["<Down>"] = cmp.mapping.select_next_item(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+	}),
+	snippet = {
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end,
+	},
+	sources = cmp.config.sources(
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+		{ name = 'buffer', keyword_length = 3 })
 })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 
 -- #### LSP ###
 
@@ -130,5 +161,15 @@ require('lspconfig').rust_analyzer.setup({
 })
 
 -- python
-require('lspconfig').pyright.setup({})
-require('lspconfig').ruff_lsp.setup({})
+require('lspconfig').pyright.setup({ cappacities = capabilities })
+require('lspconfig').ruff_lsp.setup({
+	on_attach = function(client, bufnr)
+		client.server_capabilities.hoverProvider = false
+	end
+	init_options = {
+		settings = {
+			-- Any extra CLI arguments for `ruff` go here.
+			args = { "--preview" },
+		}
+	}
+})
