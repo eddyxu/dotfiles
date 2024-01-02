@@ -101,12 +101,13 @@ require("lualine").setup({
 -- # fzf
 vim.keymap.set("n", "<c-P>",
 	"<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set("n", "<c-L>",
+	"<cmd>lua require('fzf-lua').live_grep_native()<CR>", { silent = true })
 require('fzf-lua').setup({ 'fzf-native' })
 
 -- Autocomplete
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-
 
 local cmp_has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
