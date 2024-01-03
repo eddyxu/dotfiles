@@ -29,6 +29,11 @@ require("lazy").setup({
 			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		}
 	},
+	{
+		'nanozuki/tabby.nvim',
+		event = 'VimEnter',
+		dependencies = 'nvim-tree/nvim-web-devicons',
+	},
 	{ "junegunn/fzf",                     dir = "~/.fzf", build = "./install --all" },
 	{
 		"ibhagwan/fzf-lua",
@@ -87,10 +92,15 @@ vim.o.number = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = "*",
+	command = [[:%s/\s\+$//e]],
+})
 
 vim.keymap.set("n", "<c-c>", "<ESC>:Neotree toggle<cr>")
 
 -- style
+vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.cmd.colorscheme('nord')
 require("lualine").setup({
