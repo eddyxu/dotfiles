@@ -106,6 +106,7 @@ vim.cmd.colorscheme('nord')
 require("lualine").setup({
 	options = { theme = 'nord' }
 })
+require('tabby.tabline').use_preset('active_wins_at_tail', {})
 
 
 -- # fzf
