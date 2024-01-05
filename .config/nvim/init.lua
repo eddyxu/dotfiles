@@ -73,7 +73,11 @@ require("lazy").setup({
 	{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
 	{ 'saadparwaiz1/cmp_luasnip' },
 	-- Rust
-	{ 'simrat39/rust-tools.nvim' },
+	{
+		'mrcjkb/rustaceanvim',
+		version = '^3', -- Recommended
+		ft = { 'rust' },
+	},
 	{
 		'saecki/crates.nvim',
 		tag = 'stable',
@@ -200,33 +204,6 @@ lsp_zero.set_sign_icons({
 require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
 
 -- rust
-require('lspconfig').rust_analyzer.setup({
-	settings = {
-		["rust-analyzer"] = {
-			imports = {
-				granularity = {
-					group = "module",
-				},
-				prefix = "self",
-			},
-			cargo = {
-				buildScripts = {
-					enable = true,
-				},
-			},
-			checkOnSave = {
-				command = "clippy",
-			},
-		},
-	},
-})
-require('rust-tools').setup({
-	tools = {
-		inlay_hints = {
-			auto = true
-		}
-	}
-})
 
 -- python
 local on_attach_ruff = function(client, bufnr)
