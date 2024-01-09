@@ -67,6 +67,7 @@ require("lazy").setup({
 		branch = 'v3.x'
 	},
 	{ 'neovim/nvim-lspconfig' },
+	{ 'onsails/lspkind.nvim' },
 	{ 'L3MON4D3/LuaSnip' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/cmp-path' },
@@ -124,6 +125,7 @@ require('fzf-lua').setup({ 'fzf-native' })
 -- Autocomplete
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 local cmp_has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -164,19 +166,35 @@ cmp.setup({
 		{ name = 'path' }
 	),
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				nvim_lsp_signature_help = "[SIG]",
-				luasnip = "[SNIP]",
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			menu = ({
 				buffer = "[BUF]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[SNIP]",
+				nvim_lua = "[LUA]",
 				path = "[PATH]",
-			})[entry.source.name]
-			return vim_item
-		end
+				nvim_lsp_signature_help = "[SIG]",
+			})
+		}),
 	}
 })
+-- gray
+vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
+-- blue
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
+-- light blue
+vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
+vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
+vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
+-- pink
+vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
+-- front
+vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
+vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
