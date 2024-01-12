@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- style
 	"arcticicestudio/nord-vim",
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -34,7 +35,7 @@ require("lazy").setup({
 		event = 'VimEnter',
 		dependencies = 'nvim-tree/nvim-web-devicons',
 	},
-	{ "junegunn/fzf",                     dir = "~/.fzf", build = "./install --all" },
+	{ "junegunn/fzf",    dir = "~/.fzf",      build = "./install --all" },
 	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
@@ -108,7 +109,8 @@ vim.keymap.set("n", "<c-c>", "<ESC>:Neotree toggle<cr>")
 -- style
 vim.opt.showtabline = 2
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('nord')
+--- vim.cmd.colorscheme('nord')
+vim.cmd.colorscheme "catppuccin"
 require("lualine").setup({
 	options = { theme = 'nord' }
 })
