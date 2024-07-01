@@ -35,15 +35,9 @@ if [[ -s '/etc/zsh_command_not_found' ]]; then
 fi
 
 # Customize to your needs...
-OS=`uname`
 export EDITOR=nvim
 
-if [ -d $HOME/work/go ]; then
-	export GOPATH=$HOME/work/go
-	PATH=$PATH:$HOME/work/go/bin
-fi
-
-export PATH=/opt/homebrew/bin:$PATH:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin:~/Library/Python/3.10/bin
+export PATH=/opt/homebrew/bin:$PATH:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin
 
 alias vim=nvim
 alias vi=nvim
@@ -51,6 +45,7 @@ alias vi=nvim
 export FZF_DEFAULT_COMMAND='fd --type f -E .git -E vender -E venv -E node_modules -E build -E target -E spark-warehouse -E .benchmarks -E *.lance'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+OS=`uname`
 if [ $OS = 'Darwin' ]; then
   export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
   export JAVA_HOME=`/usr/libexec/java_home`
@@ -75,8 +70,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 export MKL_DEBUG_CPU_TYPE=5
 
 
@@ -86,5 +79,4 @@ eval "$(starship init zsh)"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export MODULAR_HOME="${HOME}/.modular"
 export PATH="${HOME}/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
-
 export BAT_THEME='Visual Studio Dark+'
