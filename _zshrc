@@ -70,9 +70,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-export MKL_DEBUG_CPU_TYPE=5
-
-
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 eval "$(starship init zsh)"
