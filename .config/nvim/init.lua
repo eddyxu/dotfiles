@@ -75,12 +75,12 @@ require("lazy").setup({
 	{ 'hrsh7th/nvim-cmp' },
 	{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
 	{ 'saadparwaiz1/cmp_luasnip' },
+	-- Copilot
 	{
-		"zbirenbaum/copilot-cmp",
-		dependencies = { "zbirenbaum/copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		event = "InsertEnter",
 	},
 	-- Rust
 	{
@@ -136,11 +136,6 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
-require("copilot").setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-})
-
 local cmp_has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -154,17 +149,22 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<Up>"] = cmp.mapping.select_prev_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif cmp_has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
+		["<Tab>"] =
+			cmp.mapping(function(fallback)
+					if cmp.visible()
+					then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip
+							.expand_or_jump()
+					elseif cmp_has_words_before()
+					then
+						cmp.complete()
+					else
+						fallback()
+					end
+				end,
+				{ "i", "s" }),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 	}),
 	snippet = {
@@ -219,7 +219,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- install lsp automatically via mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ruff_lsp" }
+	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ruff_lsp", "clangd" }
 })
 
 local lsp_zero = require('lsp-zero') -- lsp default
@@ -232,6 +232,11 @@ lsp_zero.set_sign_icons({
 	warn = '▲',
 	hint = '⚑',
 	info = '»'
+})
+
+-- c cpp
+require('lspconfig').clangd.setup({
+	filetypes = { "c", "cuda", "cpp", "lua" },
 })
 
 -- lua
