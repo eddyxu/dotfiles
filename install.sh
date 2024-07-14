@@ -6,7 +6,7 @@ OS=`uname`
 if [[ $OS = 'Linux' ]]; then
   # Ubuntu 24.04+ only
   sudo apt update -y
-  sudo apt install -y zsh clang cmake protobuf-compiler
+  sudo apt install -y zsh clang cmake protobuf-compiler unzip pkg-config libssl-dev
   sudo snap install nvim --classic -y
   sudo chsh -s $(which zsh) $(whoami)
 fi

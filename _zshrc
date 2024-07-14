@@ -77,3 +77,5 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export MODULAR_HOME="${HOME}/.modular"
 export PATH="${HOME}/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export BAT_THEME='Visual Studio Dark+'
+
+export RUSTCFLAGS="-C target-cpu=native"
