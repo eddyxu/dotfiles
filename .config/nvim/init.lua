@@ -258,7 +258,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- install lsp automatically via mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ruff_lsp", "clangd" }
+	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ruff", "clangd" }
 })
 
 local lsp_zero = require('lsp-zero') -- lsp default
@@ -297,12 +297,3 @@ local on_attach_ruff = function(client, bufnr)
 	client.server_capabilities.hoverProvider = false
 end
 require('lspconfig').pyright.setup({ cappacities = capabilities })
-require('lspconfig').ruff_lsp.setup({
-	on_attach = on_attach_ruff,
-	init_options = {
-		settings = {
-			-- Any extra CLI arguments for `ruff` go here.
-			args = { "--preview" },
-		}
-	}
-})
