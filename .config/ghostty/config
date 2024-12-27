@@ -5,3 +5,5 @@ window-padding-color = extend
 
 macos-titlebar-style = tabs
 
+keybind = super+right = next_tab
+keybind = super+left = previous_tab
