@@ -52,7 +52,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "rust", "python", "bash" },
+				ensure_installed = { "lua", "vim", "vimdoc", "rust", "python", "bash", "dockerfile", "json", "markdown" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -160,7 +160,6 @@ vim.cmd.colorscheme "catppuccin"
 require("lualine").setup({
 	options = { theme = 'nord' }
 })
-require('tabby.tabline').use_preset('active_wins_at_tail', {})
 
 
 -- # fzf

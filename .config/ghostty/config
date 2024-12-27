@@ -1,0 +1,7 @@
+font-family = "CaskaydiaMono Nerd Font Mono"
+font-size = 14
+theme = nord
+window-padding-color = extend
+
+macos-titlebar-style = tabs
+
