@@ -4,6 +4,8 @@ theme = nord
 window-padding-color = extend
 
 macos-titlebar-style = tabs
+auto-update = download
 
-keybind = super+right = next_tab
-keybind = super+left = previous_tab
+
+keybind = super+right=next_tab
+keybind = super+left=previous_tab
