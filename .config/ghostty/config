@@ -5,7 +5,7 @@ window-padding-color = extend
 
 macos-titlebar-style = tabs
 auto-update = download
-
+shell-integration = zsh
 
 keybind = super+right=next_tab
 keybind = super+left=previous_tab
