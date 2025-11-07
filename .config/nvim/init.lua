@@ -227,14 +227,6 @@ lsp_zero.set_sign_icons({
 	info = '»'
 })
 
--- c cpp
-require('lspconfig').clangd.setup({
-	filetypes = { "c", "cuda", "cpp", "lua" },
-})
-
--- lua
-require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
-
 -- rust
 local bufnr = vim.api.nvim_get_current_buf()
 vim.keymap.set(
@@ -250,4 +242,3 @@ vim.keymap.set(
 local on_attach_ruff = function(client, bufnr)
 	client.server_capabilities.hoverProvider = false
 end
-require('lspconfig').pyright.setup({ cappacities = capabilities })
