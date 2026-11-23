@@ -37,7 +37,7 @@ fi
 # Customize to your needs...
 export EDITOR=nvim
 
-export PATH=/opt/homebrew/bin:$PATH:/snap/bin:~/.cargo/bin:~/bin:~/.local/bin
+export PATH="/opt/homebrew/bin:$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH:/snap/bin"
 
 alias vim=nvim
 alias vi=nvim
@@ -55,12 +55,23 @@ fi
 eval "$(starship init zsh)"
 export PATH="${HOME}/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export BAT_THEME='Visual Studio Dark+'
+export AWS_PAGER=""
 
 export RUSTCFLAGS="-C target-cpu=native"
 
+# Lazy-load nvm to keep interactive shell startup fast
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  _load_nvm() {
+    unset -f nvm node npm npx
+    \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  }
+  for _cmd in nvm node npm npx; do
+    eval "${_cmd}() { _load_nvm && ${_cmd} \"\$@\"; }"
+  done
+  unset _cmd
+fi
 # aikido-endpoint-cert-config-start
 # Allow Node.js tooling to trust the SafeChain MITM CA while preserving public roots.
 export NODE_EXTRA_CA_CERTS="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-node-combined-ca.pem"
