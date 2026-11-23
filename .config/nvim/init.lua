@@ -35,7 +35,6 @@ require("lazy").setup({
 		event = 'VimEnter',
 		dependencies = 'nvim-tree/nvim-web-devicons',
 	},
-	{ "junegunn/fzf",    dir = "~/.fzf",      build = "./install --all" },
 	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
@@ -47,15 +46,18 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "rust", "python", "bash", "dockerfile", "json", "markdown" },
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
+			-- main branch: parsers are built with the tree-sitter CLI (brew "tree-sitter-cli")
+			require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "rust", "python", "bash", "dockerfile", "json", "markdown" })
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function(args)
+					if pcall(vim.treesitter.start, args.buf) then
+						vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end,
 			})
 		end
 	},
